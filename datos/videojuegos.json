@@ -1,0 +1,204 @@
+{
+  "videojuegos": [
+    {
+      "id": 1,
+      "titulo": "The Legend of Zelda: Breath of the Wild",
+      "genero": "Aventura",
+      "desarrollador": "Nintendo",
+      "rating": 9.7,
+      "horas_jugadas": 65
+    },
+    {
+      "id": 2,
+      "titulo": "Hollow Knight",
+      "genero": "Metroidvania",
+      "desarrollador": "Team Cherry",
+      "rating": 9.2,
+      "horas_jugadas": 40
+    },
+    {
+      "id": 3,
+      "titulo": "Stardew Valley",
+      "genero": "Simulacion",
+      "desarrollador": "ConcernedApe",
+      "rating": 9.1,
+      "horas_jugadas": 80
+    },
+    {
+      "id": 4,
+      "titulo": "Dark Souls III",
+      "genero": "RPG",
+      "desarrollador": "FromSoftware",
+      "rating": 9.0,
+      "horas_jugadas": 55
+    },
+    {
+      "id": 5,
+      "titulo": "Celeste",
+      "genero": "Plataformas",
+      "desarrollador": "Maddy Makes Games",
+      "rating": 9.0,
+      "horas_jugadas": 15
+    },
+    {
+      "id": 6,
+      "titulo": "The Witcher 3: Wild Hunt",
+      "genero": "RPG",
+      "desarrollador": "CD Projekt Red",
+      "rating": 9.6,
+      "horas_jugadas": 100
+    },
+    {
+      "id": 7,
+      "titulo": "Portal 2",
+      "genero": "Puzzle",
+      "desarrollador": "Valve",
+      "rating": 9.5,
+      "horas_jugadas": 12
+    },
+    {
+      "id": 8,
+      "titulo": "Minecraft",
+      "genero": "Sandbox",
+      "desarrollador": "Mojang",
+      "rating": 9.0,
+      "horas_jugadas": 200
+    },
+    {
+      "id": 9,
+      "titulo": "Overwatch 2",
+      "genero": "Shooter",
+      "desarrollador": "Blizzard Entertainment",
+      "rating": 7.8,
+      "horas_jugadas": 90
+    },
+    {
+      "id": 10,
+      "titulo": "League of Legends",
+      "genero": "MOBA",
+      "desarrollador": "Riot Games",
+      "rating": 8.0,
+      "horas_jugadas": 300
+    },
+    {
+      "id": 11,
+      "titulo": "Valorant",
+      "genero": "Shooter",
+      "desarrollador": "Riot Games",
+      "rating": 8.1,
+      "horas_jugadas": 150
+    },
+    {
+      "id": 12,
+      "titulo": "Civilization VI",
+      "genero": "Estrategia",
+      "desarrollador": "Firaxis Games",
+      "rating": 8.8,
+      "horas_jugadas": 120
+    },
+    {
+      "id": 13,
+      "titulo": "Slay the Spire",
+      "genero": "Roguelike",
+      "desarrollador": "Mega Crit",
+      "rating": 8.9,
+      "horas_jugadas": 60
+    },
+    {
+      "id": 14,
+      "titulo": "Hades",
+      "genero": "Roguelike",
+      "desarrollador": "Supergiant Games",
+      "rating": 9.3,
+      "horas_jugadas": 45
+    },
+    {
+      "id": 15,
+      "titulo": "Red Dead Redemption 2",
+      "genero": "Aventura",
+      "desarrollador": "Rockstar Games",
+      "rating": 9.5,
+      "horas_jugadas": 90
+    },
+    {
+      "id": 16,
+      "titulo": "Animal Crossing: New Horizons",
+      "genero": "Simulacion",
+      "desarrollador": "Nintendo",
+      "rating": 8.7,
+      "horas_jugadas": 150
+    },
+    {
+      "id": 17,
+      "titulo": "Elden Ring",
+      "genero": "RPG",
+      "desarrollador": "FromSoftware",
+      "rating": 9.6,
+      "horas_jugadas": 110
+    },
+    {
+      "id": 18,
+      "titulo": "Among Us",
+      "genero": "Fiesta",
+      "desarrollador": "Innersloth",
+      "rating": 8.0,
+      "horas_jugadas": 20
+    },
+    {
+      "id": 19,
+      "titulo": "Terraria",
+      "genero": "Sandbox",
+      "desarrollador": "Re-Logic",
+      "rating": 8.9,
+      "horas_jugadas": 130
+    },
+    {
+      "id": 20,
+      "titulo": "Fall Guys",
+      "genero": "Fiesta",
+      "desarrollador": "Mediatonic",
+      "rating": 7.5,
+      "horas_jugadas": 25
+    },
+    {
+      "id": 21,
+      "titulo": "God of War (2018)",
+      "genero": "Aventura",
+      "desarrollador": "Santa Monica Studio",
+      "rating": 9.5,
+      "horas_jugadas": 35
+    },
+    {
+      "id": 22,
+      "titulo": "Undertale",
+      "genero": "RPG",
+      "desarrollador": "Toby Fox",
+      "rating": 9.2,
+      "horas_jugadas": 10
+    },
+    {
+      "id": 23,
+      "titulo": "Rocket League",
+      "genero": "Deportes",
+      "desarrollador": "Psyonix",
+      "rating": 8.5,
+      "horas_jugadas": 200
+    },
+    {
+      "id": 24,
+      "titulo": "Cuphead",
+      "genero": "Plataformas",
+      "desarrollador": "Studio MDHR",
+      "rating": 8.8,
+      "horas_jugadas": 12
+    },
+    {
+      "id": 25,
+      "titulo": "Baldur's Gate 3",
+      "genero": "RPG",
+      "desarrollador": "Larian Studios",
+      "rating": 9.7,
+      "horas_jugadas": 150
+    }
+  ]
+}
