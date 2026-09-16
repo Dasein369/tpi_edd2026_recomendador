@@ -60,7 +60,7 @@ proyecto/
 **Importante:** hay que correr los comandos parado en la raíz del proyecto (la misma carpeta donde está `main.py`), porque el dataset se carga con una ruta relativa (`datos/videojuegos.json`).
 
 ```bash
-python3 main.py
+python main.py
 ```
 
 Esto levanta el menú interactivo por terminal:

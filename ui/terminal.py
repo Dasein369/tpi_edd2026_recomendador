@@ -27,7 +27,7 @@ class Terminal:
 
     def _mostrar_menu(self) -> None:
         print("=" * 40)
-        print(" 🎮 PIXEXPERIENCE — TERMINAL")
+        print(" 🎮 PIXEXPERIENCE — TERMINAL (v1)")
         print("=" * 40)
         print("1. Buscar videojuego")
         print("2. Listar todos los videojuegos")
