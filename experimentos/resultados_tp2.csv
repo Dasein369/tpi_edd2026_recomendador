@@ -1,0 +1,5 @@
+n_elementos,iteraciones,secuencial_ns,arbol_ns,secuencial_us,arbol_us,relacion_secuencial_vs_arbol,altura_arbol
+100,20000,5526,360,5.526,0.36,15.35,7
+1000,2000,54935,1122,54.935,1.122,48.96,10
+10000,200,554430,1124,554.43,1.124,493.27,14
+100000,20,5769236,1862,5769.236,1.862,3098.41,17
