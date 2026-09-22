@@ -1,7 +1,12 @@
-# PixExperience
+# Pixperience
 Sistema de recomendaciones de Videojuegos
 
 Trabajo Práctico Integrador (TPI) — Estructuras de Datos
+
+## Integrantes
+- Santiago Giménez
+- Martín Sánchez
+- Gastón Neibert
 
 ## Estructura del proyecto
 
