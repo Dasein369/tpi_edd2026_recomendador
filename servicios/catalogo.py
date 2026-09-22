@@ -1,5 +1,6 @@
 import json
 
+from algoritmos.busqueda_secuencial import buscar_secuencial
 from modelos.videojuego import Videojuego
 
 
@@ -12,22 +13,13 @@ class Catalogo:
     def cargar_desde_json(self, ruta: str) -> None:
         with open(ruta, encoding="utf-8") as archivo:
             datos = json.load(archivo)
-
         elementos = datos.get("videojuegos", datos) if isinstance(datos, dict) else datos
         for item in elementos:
             self._elementos.append(Videojuego(**item))
 
     def buscar(self, titulo: str) -> Videojuego | None:
-        """Búsqueda por título, sin distinguir mayúsculas (match exacto).
-
-        Recorrido lineal, O(n). En TP2 vamos a medir esta complejidad
-        y en TP3 este recorrido lo reemplazamos por un árbol de
-        búsqueda binaria.
-        """
-        for videojuego in self._elementos:
-            if videojuego.titulo.lower() == titulo.lower():
-                return videojuego
-        return None
+        """Búsqueda secuencial por título, sin distinguir mayúsculas."""
+        return buscar_secuencial(self._elementos, titulo)
 
     def buscar_parcial(self, texto: str) -> list[Videojuego]:
         """Búsqueda flexible: 'zeld' encuentra 'Zelda'."""
@@ -39,7 +31,6 @@ class Catalogo:
 
     def filtrar(self, genero: str = None, desarrollador: str = None, rating_minimo: float = None) -> list[Videojuego]:
         resultado = self._elementos
-
         if genero:
             resultado = [v for v in resultado if v.genero.lower() == genero.lower()]
 
