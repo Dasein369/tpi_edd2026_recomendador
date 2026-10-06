@@ -1,6 +1,6 @@
 import json
 
-from algoritmos.busqueda_secuencial import buscar_secuencial
+from estructuras.arbol_binario_busqueda import ArbolBinarioBusqueda
 from modelos.videojuego import Videojuego
 
 
@@ -9,17 +9,24 @@ class Catalogo:
 
     def __init__(self) -> None:
         self._elementos: list[Videojuego] = []
+        self._arbol_titulos = ArbolBinarioBusqueda()
 
     def cargar_desde_json(self, ruta: str) -> None:
         with open(ruta, encoding="utf-8") as archivo:
             datos = json.load(archivo)
         elementos = datos.get("videojuegos", datos) if isinstance(datos, dict) else datos
-        for item in elementos:
-            self._elementos.append(Videojuego(**item))
+        nuevos = [Videojuego(**item) for item in elementos]
+        catalogo_actualizado = [*self._elementos, *nuevos]
+
+        # Se construye un índice nuevo por inserción para evitar que un error de
+        # los datos deje desincronizados la lista del catálogo y el árbol.
+        arbol_actualizado = ArbolBinarioBusqueda(catalogo_actualizado)
+        self._elementos = catalogo_actualizado
+        self._arbol_titulos = arbol_actualizado
 
     def buscar(self, titulo: str) -> Videojuego | None:
-        """Búsqueda secuencial por título, sin distinguir mayúsculas."""
-        return buscar_secuencial(self._elementos, titulo)
+        """Búsqueda por título con el BST integrado, sin distinguir mayúsculas."""
+        return self._arbol_titulos.buscar(titulo)
 
     def buscar_parcial(self, texto: str) -> list[Videojuego]:
         """Búsqueda flexible: 'zeld' encuentra 'Zelda'."""

@@ -27,7 +27,7 @@ class Terminal:
 
     def _mostrar_menu(self) -> None:
         print("=" * 40)
-        print(" 🎮 PIXEXPERIENCE — TERMINAL (v1)")
+        print(" 🎮 PIXPERIENCE — TERMINAL (v2)")
         print("=" * 40)
         print("1. Buscar videojuego")
         print("2. Listar todos los videojuegos")
@@ -39,7 +39,12 @@ class Terminal:
         titulo = input("Título a buscar: ").strip()
         resultado = self._catalogo.buscar(titulo)
         if resultado:
-            print(f"Encontrado: {resultado}")
+            print("Ficha del videojuego:")
+            print(f"Título: {resultado.titulo}")
+            print(f"Género: {resultado.genero}")
+            print(f"Desarrollador: {resultado.desarrollador}")
+            print(f"Rating: {resultado.rating}")
+            print(f"Horas jugadas (usuario): {resultado.horas_jugadas}")
         else:
             print(f"No encontramos '{titulo}'.")
 
