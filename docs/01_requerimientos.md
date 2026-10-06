@@ -21,7 +21,7 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 | ID | Requerimiento | Etapa prevista | Estado actual |
 |----|---------------|-----------------|---------------|
 | RF01 | El sistema debe recomendar un juego a partir de uno o varios juegos que le gustaron al usuario. | TP7–TP8 | Pendiente |
-| RF02 | El sistema debe permitir buscar un juego por título y ver su ficha completa. | TP1; eficiencia en TP2–TP4 | Parcial: busca por título exacto (sin distinguir mayúsculas) y muestra título, género y rating. Falta la ficha completa (tags, desarrollador, horas jugadas). |
+| RF02 | El sistema debe permitir buscar un juego por título y ver su ficha completa. | TP1; eficiencia en TP2–TP4 | Parcial: TP3 integra búsqueda exacta sin distinguir mayúsculas y muestra título, género, desarrollador, rating y horas jugadas. Los tags todavía no están en el modelo; se incorporan en TP5. |
 | RF03 | El sistema debe mostrar el Top 15 de juegos según un criterio (rating, popularidad, etc.). | TP6 | Pendiente |
 | RF04 | El sistema debe permitir explorar juegos por género o categoría. | TP1 (filtro); TP5 (jerarquía) | Parcial: filtra por género exacto. Faltan tags y jerarquía de categorías. |
 | RF05 | El sistema debe mostrar qué tan relacionados están dos o más juegos elegidos por el usuario. | TP7–TP8 | Pendiente |
@@ -41,9 +41,9 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 |----|---------------|
 | RNF01 | El sistema debe ejecutarse con Python 3.10 o superior, usando solo la librería estándar. |
 | RNF02 | El sistema debe operarse íntegramente por una interfaz de línea de comandos. |
-| RNF03 | El código debe separarse en capas: `modelos` (datos), `servicios` (lógica), `algoritmos` (estrategias de búsqueda/ordenamiento) y `ui` (interacción). |
+| RNF03 | El código debe separarse en capas: `modelos` (datos), `estructuras` (colecciones), `servicios` (lógica), `algoritmos` (búsqueda y experimentos) y `ui` (interacción). |
 | RNF04 | Las operaciones del catálogo deben tener pruebas automatizadas (`unittest`). |
-| RNF05 | La búsqueda por título en producción es actualmente secuencial: **Θ(n)**. TP2 comparó esto contra una segunda estrategia (árbol binario balanceado, Θ(log n)) a nivel experimental (`experimentos/benchmark_tp2.py`, `docs/tp2-complejidad.md`), sin integrarla todavía a la aplicación. Migrar la búsqueda de producción a una estructura de tiempo logarítmico es el objetivo de TP3. |
+| RNF05 | La búsqueda por título en producción usa el BST dinámico integrado en TP3. Su costo es O(h), donde h es la altura del árbol: Θ(log n) en promedio si la forma acompaña y O(n) en el peor caso. TP2 conserva su comparación histórica entre búsqueda secuencial y árbol estático balanceado en `experimentos/benchmark_tp2.py`. |
 | RNF06 | El sistema debe soportar catálogos grandes sin degradación perceptible. TP2 midió ambas estrategias hasta 100.000 elementos: la secuencial escala linealmente (~6.1 ms en el peor caso con 100.000 elementos, en la máquina de prueba); el árbol balanceado se mantiene prácticamente constante (~2.4 µs). Los tiempos absolutos dependen del hardware; lo relevante es la diferencia de orden de crecimiento. |
 | RNF07 | El Top 15 debe obtenerse sin ordenar todo el catálogo en cada consulta. |
 | RNF08 | Las relaciones entre juegos deben precalcularse, para no comparar contra todo el catálogo en cada consulta. |
@@ -54,8 +54,8 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 - Las horas jugadas se usan como aproximación de cuánto disfruta el usuario un juego,
   para intuir su perfil de gustos.
 - Búsqueda, exploración, ranking, relaciones y recomendaciones, todo por terminal.
-- Comparación experimental de estrategias de búsqueda (TP2), como base para elegir
-  la estructura de datos a integrar en TP3.
+- Comparación experimental de estrategias de búsqueda en TP2 y TP3; TP3 integra un BST
+  dinámico por título en la aplicación.
 
 ## 5. Fuera de alcance
 

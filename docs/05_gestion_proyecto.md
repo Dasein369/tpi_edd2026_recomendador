@@ -19,7 +19,7 @@ retrospectiva breve al cierre.
 | TP0 — Lanzamiento | Nombre, dominio, problema, usuario objetivo, cinco funcionalidades, ejemplo de interacción, boceto de terminal, diagrama inicial, propuesta | Hecho (9 tarjetas) |
 | TP1 — Objetos y clases | Clases del dominio, encapsulamiento, interfaces entre módulos, carga de datos, terminal, buscar/listar/filtrar | Hecho (6 tarjetas; demo pendiente) |
 | TP2 — Complejidad | Operación crítica, dos estrategias de búsqueda, mediciones con 100 a 100.000 elementos, notación O/Ω/Θ, conclusión técnica | Hecho (6 tarjetas) |
-| TP3 — Árbol binario | Árbol de búsqueda integrado a la aplicación | En curso |
+| TP3 — Árbol binario | BST por título, búsqueda integrada, recorridos, comparación con la búsqueda secuencial, pruebas y documentación | Hecho (5 tarjetas) |
 
 ## Historias de usuario
 
@@ -31,8 +31,9 @@ menos un juego recomendado que no sea ninguno de los ingresados.
 
 **HU-02 — Buscar (RF02)**
 Como jugador quiero buscar un juego por título para ver su ficha completa.
-*Criterios:* no distingue mayúsculas; si existe, muestra título, género, tags,
-desarrollador, rating y horas jugadas; si no existe, lo informa.
+*Criterios TP3:* no distingue mayúsculas; si existe, muestra título, género,
+desarrollador, rating y horas jugadas; si no existe, lo informa. Los tags siguen
+pospuestos hasta que se extienda el modelo en TP5.
 
 **HU-03 — Top 15 (RF03)**
 Como jugador quiero ver el Top 15 según un criterio para decidir rápido qué jugar.
@@ -52,6 +53,14 @@ estructura más eficiente antes de integrarla al producto.
 *Criterios de aceptación:* dos estrategias implementadas y con pruebas; medición con
 100, 1.000, 10.000 y 100.000 elementos; complejidad expresada en notación O/Ω/Θ;
 conclusión técnica documentada.
+
+**Tarea técnica TP3 — Integrar un BST por título**
+Como equipo queremos reemplazar la búsqueda secuencial de producción por un árbol
+binario de búsqueda dinámico, para consultar el catálogo navegando por título.
+*Criterios de aceptación:* clave `titulo.casefold()`; inserción, búsqueda y recorridos
+inorder/preorder/postorder; uso desde `Catalogo.buscar()`; misma respuesta que la
+búsqueda secuencial de TP2; casos cubiertos con `unittest`; comparación y complejidad
+documentadas; aplicación identificada como versión 2.
 
 ## Retrospectivas
 
@@ -76,3 +85,13 @@ conclusión técnica documentada.
 - **Acción para TP3:** acordar entre los tres integrantes, antes de escribir código,
   que el árbol de TP3 se construye por inserción (no reutiliza el árbol balanceado de
   TP2), para que TP4 tenga un caso real de desbalance que resolver.
+
+### Sprint TP3
+
+- **Qué salió bien:** el BST quedó conectado a `Catalogo.buscar()` y se conservó la
+  búsqueda secuencial para comparar estrategias; inserciones y recorridos se
+  implementaron de forma iterativa para admitir árboles degenerados grandes.
+- **Qué mejorar:** el BST no garantiza altura logarítmica; insertar títulos ordenados
+  puede llevar búsqueda e inserción a O(n).
+- **Acción para TP4:** implementar AVL y comparar altura y búsqueda con el BST usando
+  inserciones aleatorias y títulos ordenados.

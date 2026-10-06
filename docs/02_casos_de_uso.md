@@ -46,12 +46,11 @@ flowchart LR
   1. El jugador selecciona "Buscar juego".
   2. El sistema pregunta qué juego desea buscar.
   3. El jugador ingresa el título.
-  4. El sistema muestra la ficha del juego: título, género, tags, desarrollador, rating y horas jugadas.
+  4. El sistema consulta el BST por título, sin distinguir mayúsculas, y muestra título, género, desarrollador, rating y horas jugadas. Los tags se incorporarán cuando se extienda el modelo en TP5.
 - **Flujo alternativo:** si no existe, el sistema informa que no se encontró el título.
-- **Estado TP1/TP2:** la ficha muestra título, género y rating. La búsqueda en producción
-  es secuencial (`algoritmos/busqueda_secuencial.py`). TP2 comparó esta estrategia contra
-  un árbol balanceado a nivel experimental (ver `docs/tp2-complejidad.md`); la integración
-  de una estructura más eficiente a este caso de uso queda para TP3.
+- **Estado TP3:** la búsqueda en producción está integrada con `ArbolBinarioBusqueda`
+  (`estructuras/arbol_binario_busqueda.py`). La lista sigue sosteniendo listar y filtrar;
+  TP2 mantiene la función secuencial como referencia para comparar estrategias.
 
 ## CU03 — Ver Top 15 (RF03)
 - **Actor:** Jugador

@@ -1,0 +1,5 @@
+elementos,busqueda_secuencial_ns,busqueda_bst_ns,altura_bst,relacion_secuencial_bst
+100,13551.7,2773.3,13,4.89
+1000,147089.8,4124.0,22,35.67
+10000,1398428.0,4708.0,30,297.03
+100000,13903700.0,6380.0,39,2179.26
