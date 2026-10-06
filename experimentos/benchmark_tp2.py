@@ -18,7 +18,7 @@ from modelos.videojuego import Videojuego
 
 TAMANOS = (100, 1_000, 10_000, 100_000)
 REPETICIONES = 7
-COMPARACIONES_OBJETIVO = 2_000_000
+COMPARACIONES_OBJETIVO = 5_000_000
 SEED_PATH = ROOT / "datos" / "videojuegos.json"
 RESULTADOS_PATH = ROOT / "experimentos" / "resultados_tp2.csv"
 DOCUMENTACION_PATH = ROOT / "docs" / "tp2-complejidad.md"
@@ -161,9 +161,9 @@ La comparación se realiza con 100, 1.000, 10.000 y 100.000 elementos.
 
 La función `buscar_secuencial` recorre los elementos desde el comienzo y compara el título de cada videojuego con el buscado.
 
-- Mejor caso: **Ω(1)**, cuando el primer elemento coincide.
+- Mejor caso: **Θ(1)**, cuando el primer elemento coincide.
 - Caso promedio: **Θ(n)**.
-- Peor caso: **O(n)**, cuando el elemento está al final o no existe.
+- Peor caso: **Θ(n)**, cuando el elemento está al final o no existe.
 - Espacio adicional: **O(1)**.
 
 En el benchmark se busca deliberadamente el último elemento de la lista para observar el peor caso temporal.
@@ -174,9 +174,9 @@ En el benchmark se busca deliberadamente el último elemento de la lista para ob
 
 En cada comparación, si el título buscado es menor se continúa por la izquierda y, si es mayor, por la derecha.
 
-- Mejor caso: **Ω(1)**, si la raíz coincide.
+- Mejor caso: **Θ(1)**, si la raíz coincide.
 - Caso promedio: **Θ(log n)**.
-- Peor caso en este experimento: **O(log n)**, porque el árbol se construye balanceado.
+- Peor caso en este experimento: **Θ(log n)**, porque el árbol se construye balanceado.
 - Espacio del árbol: **O(n)**.
 
 La construcción del árbol se excluye de la medición de búsqueda. En esta implementación la construcción incluye ordenar los datos, por lo que cuesta **O(n log n)**; es un costo de preparación amortizable cuando el catálogo se consulta muchas veces.
