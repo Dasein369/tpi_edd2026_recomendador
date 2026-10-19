@@ -73,6 +73,24 @@ class ArbolBinarioBusqueda:
 
         return None
 
+    def pasos_busqueda(self, titulo: str) -> int:
+        """Cantidad de nodos visitados al buscar ``titulo``, para los experimentos.
+
+        Mide el costo en comparaciones, independiente del hardware y del intérprete.
+        """
+        objetivo = titulo.casefold()
+        actual = self._raiz
+        pasos = 0
+
+        while actual is not None:
+            pasos += 1
+            clave_actual = self._clave(actual.videojuego)
+            if objetivo == clave_actual:
+                break
+            actual = actual.izquierda if objetivo < clave_actual else actual.derecha
+
+        return pasos
+
     def inorder(self) -> list[Videojuego]:
         """Recorre izquierda-raíz-derecha y devuelve los juegos por título."""
         resultado: list[Videojuego] = []

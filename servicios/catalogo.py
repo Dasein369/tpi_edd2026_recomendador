@@ -1,6 +1,6 @@
 import json
 
-from estructuras.arbol_binario_busqueda import ArbolBinarioBusqueda
+from estructuras.arbol_avl import ArbolAVL
 from modelos.videojuego import Videojuego
 
 
@@ -9,7 +9,7 @@ class Catalogo:
 
     def __init__(self) -> None:
         self._elementos: list[Videojuego] = []
-        self._arbol_titulos = ArbolBinarioBusqueda()
+        self._arbol_titulos = ArbolAVL()
 
     def cargar_desde_json(self, ruta: str) -> None:
         with open(ruta, encoding="utf-8") as archivo:
@@ -19,13 +19,14 @@ class Catalogo:
         catalogo_actualizado = [*self._elementos, *nuevos]
 
         # Se construye un índice nuevo por inserción para evitar que un error de
-        # los datos deje desincronizados la lista del catálogo y el árbol.
-        arbol_actualizado = ArbolBinarioBusqueda(catalogo_actualizado)
+        # los datos deje desincronizados la lista del catálogo y el árbol. El AVL se
+        # autobalancea, así que el orden de los datos no afecta su altura.
+        arbol_actualizado = ArbolAVL(catalogo_actualizado)
         self._elementos = catalogo_actualizado
         self._arbol_titulos = arbol_actualizado
 
     def buscar(self, titulo: str) -> Videojuego | None:
-        """Búsqueda por título con el BST integrado, sin distinguir mayúsculas."""
+        """Búsqueda por título con el AVL integrado, O(log n) garantizado, sin distinguir mayúsculas."""
         return self._arbol_titulos.buscar(titulo)
 
     def buscar_parcial(self, texto: str) -> list[Videojuego]:

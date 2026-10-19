@@ -46,10 +46,11 @@ flowchart LR
   1. El jugador selecciona "Buscar juego".
   2. El sistema pregunta qué juego desea buscar.
   3. El jugador ingresa el título.
-  4. El sistema consulta el BST por título, sin distinguir mayúsculas, y muestra título, género, desarrollador, rating y horas jugadas. Los tags se incorporarán cuando se extienda el modelo en TP5.
+  4. El sistema consulta el AVL por título, sin distinguir mayúsculas, y muestra título, género, desarrollador, rating y horas jugadas. Los tags se incorporarán cuando se extienda el modelo en TP5.
 - **Flujo alternativo:** si no existe, el sistema informa que no se encontró el título.
-- **Estado TP3:** la búsqueda en producción está integrada con `ArbolBinarioBusqueda`
-  (`estructuras/arbol_binario_busqueda.py`). La lista sigue sosteniendo listar y filtrar;
+- **Estado TP4:** la búsqueda en producción está integrada con `ArbolAVL`
+  (`estructuras/arbol_avl.py`), que reemplazó al BST de TP3 (`ArbolBinarioBusqueda`)
+  para garantizar O(log n) sin importar el orden de carga. La lista sigue sosteniendo listar y filtrar;
   TP2 mantiene la función secuencial como referencia para comparar estrategias.
 
 ## CU03 — Ver Top 15 (RF03)

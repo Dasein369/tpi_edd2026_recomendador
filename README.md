@@ -14,7 +14,8 @@ Trabajo Práctico Integrador (TPI) — Estructuras de Datos
 proyecto/
 ├── main.py                       # punto de entrada
 ├── estructuras/
-│   └── arbol_binario_busqueda.py  # BST dinámico por título (TP3)
+│   ├── arbol_binario_busqueda.py  # BST dinámico por título (TP3)
+│   └── arbol_avl.py               # AVL autobalanceado por título (TP4)
 ├── algoritmos/
 │   └── busqueda_secuencial.py     # estrategia de referencia de TP2/TP3
 ├── modelos/
@@ -26,11 +27,13 @@ proyecto/
 ├── datos/
 │   └── videojuegos.json           # dataset de prueba
 ├── experimentos/
-│   └── benchmark_tp3.py           # comparación de estrategias integrada a TP3
+│   ├── benchmark_tp3.py           # comparación de estrategias integrada a TP3
+│   └── benchmark_tp4.py           # BST vs AVL ante entradas desbalanceadas (TP4)
 ├── tests/
 │   ├── test_catalogo.py           # pruebas de las operaciones
 │   ├── test_tp2.py                # comparación TP2
-│   └── test_tp3.py                # árbol e integración con el catálogo
+│   ├── test_tp3.py                # árbol e integración con el catálogo
+│   └── test_tp4.py                # AVL: rotaciones, invariantes, integración
 └── docs/
     ├── 01_requerimientos.md
     ├── 02_casos_de_uso.md
@@ -38,7 +41,8 @@ proyecto/
     ├── 04_diagrama_datos.md
     ├── 05_gestion_proyecto.md
     ├── tp2-complejidad.md
-    └── tp3-complejidad.md
+    ├── tp3-complejidad.md
+    └── tp4-avl.md
 ```
 
 ## Requisitos
@@ -91,10 +95,11 @@ Esto levanta el menú interactivo por terminal:
 0. Salir
 ```
 
-La versión 2 integra un árbol binario de búsqueda construido por inserción para buscar
-por título. La lista del catálogo se conserva para listar y filtrar. El BST no se
-balancea: su búsqueda cuesta `O(h)`, con `O(log n)` promedio si su forma acompaña y
-`O(n)` en el peor caso. TP4 abordará ese límite con AVL.
+La búsqueda por título usa un árbol AVL, construido por inserción. La lista del
+catálogo se conserva para listar y filtrar. El BST de TP3 se desbalancea con entradas
+ordenadas (búsqueda `O(n)` en el peor caso); el AVL se autobalancea con rotaciones y
+garantiza `O(log n)` para cualquier orden de carga. El BST se conserva para el
+experimento comparativo de TP4.
 
 ## Documentación
 
@@ -105,6 +110,7 @@ balancea: su búsqueda cuesta `O(h)`, con `O(log n)` promedio si su forma acompa
 - [Gestión del proyecto](docs/05_gestion_proyecto.md)
 - [Análisis TP2](docs/tp2-complejidad.md)
 - [Comparación TP3](docs/tp3-complejidad.md)
+- [AVL frente al BST desbalanceado (TP4)](docs/tp4-avl.md)
 
 ## Correr las pruebas
 
