@@ -38,7 +38,7 @@ class Catalogo:
         return list(self._elementos)
 
     def filtrar(self, genero: str = None, desarrollador: str = None, rating_minimo: float = None) -> list[Videojuego]:
-        resultado = self._elementos
+        resultado = list(self._elementos)
         if genero:
             resultado = [v for v in resultado if v.genero.lower() == genero.lower()]
 
