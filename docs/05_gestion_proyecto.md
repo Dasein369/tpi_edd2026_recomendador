@@ -21,6 +21,7 @@ retrospectiva breve al cierre.
 | TP2 — Complejidad | Operación crítica, dos estrategias de búsqueda, mediciones con 100 a 100.000 elementos, notación O/Ω/Θ, conclusión técnica | Hecho (6 tarjetas) |
 | TP3 — Árbol binario | BST por título, búsqueda integrada, recorridos, comparación con la búsqueda secuencial, pruebas y documentación | Hecho (5 tarjetas) |
 | TP4 — AVL | Rotaciones, pruebas de desbalance del BST, comparación experimental y explicación de la complejidad | Hecho (4 tarjetas) |
+
 ## Historias de usuario
 
 **HU-01 — Recomendar (RF01)**
