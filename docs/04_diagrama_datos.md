@@ -42,9 +42,9 @@ recorridos lineales sobre la lista.
 
 **Estructura del experimento de TP2:** `ArbolBusquedaBalanceada`, construido ordenando
 los datos y particionando por el elemento medio. Mantiene altura O(log n) por
+construcción, pero no está conectado a la aplicación. El AVL de producción no la
 reutiliza: mantiene una altura O(log n) de forma incremental, aunque no siempre
 la mínima posible, sin reconstruir al insertar.
-reutiliza: logra la misma altura de forma incremental, sin reconstruir al insertar.
 
 ## Diagrama objetivo (producto final)
 
