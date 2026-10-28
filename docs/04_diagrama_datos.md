@@ -3,8 +3,9 @@
 ## Estado actual (TP4)
 
 La carga conserva una lista para listar y filtrar. Para buscar por título, `Catalogo`
-mantiene un AVL construido por inserción en el orden de los datos; se autobalancea, así
-que ese orden no afecta su altura. El BST de TP3 y el árbol estático de TP2 quedan como
+mantiene un AVL construido por inserción en el orden de los datos; se autobalancea,
+por lo que mantiene altura O(log n) con cualquier orden de carga, aunque la altura
+exacta puede variar. El BST de TP3 y el árbol estático de TP2 quedan como
 referencia experimental.
 
 ```mermaid
@@ -41,7 +42,8 @@ recorridos lineales sobre la lista.
 
 **Estructura del experimento de TP2:** `ArbolBusquedaBalanceada`, construido ordenando
 los datos y particionando por el elemento medio. Mantiene altura O(log n) por
-construcción, pero no está conectado a la aplicación. El AVL de producción no la
+reutiliza: mantiene una altura O(log n) de forma incremental, aunque no siempre
+la mínima posible, sin reconstruir al insertar.
 reutiliza: logra la misma altura de forma incremental, sin reconstruir al insertar.
 
 ## Diagrama objetivo (producto final)
