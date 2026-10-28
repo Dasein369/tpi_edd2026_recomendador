@@ -35,7 +35,7 @@ de títulos únicos (construidos a partir de `datos/videojuegos.json`):
 - **ascendente**: Títulos ya ordenados de la A a la Z (catálogo exportado alfabéticamente).
 - **descendente**: Títulos ordenados de la Z a la A.
 - **zigzag**: Se alterna el menor y el mayor que quedan: A, Z, B, Y, C, X…
-- **casi_ordenado**: Ordenados, con un intercambio entre posiciones cercanas por cada 20 títulos
+- **casi_ordenado**: Ordenados, con un intercambio entre posiciones cercanas por cada 20 títulos.
 - **aleatorio**: Orden mezclado con semilla fija (caso favorable, grupo de control).
 
 ## 3. AVL: invariante y rotaciones
@@ -188,7 +188,7 @@ que la teoría permite a un AVL.
 ### 5.4 Una escala donde el BST degenerado ya no es práctico
 
 Con 100.000 títulos ya ordenados, el BST necesitaría
-4.999.950.000 comparaciones solo para construirse (`n(n−1)/2`), por lo
+4.999.950.000 comparaciones para construirse (`n(n−1)/2`), por lo
 que no se ejecuta. El AVL, en cambio, lo construye en
 1.361 ms con altura 17 (mínima posible:
 17), 99.983 rotaciones y
@@ -213,8 +213,8 @@ altura 31 y 16,2 pasos promedio, contra altura 16 y
 13,6 del AVL: con orden aleatorio el BST se defiende bien en promedio, aunque su peor
 rama sigue siendo más profunda. **El BST rinde solo si el orden de entrada tiene suerte**, y
 el catálogo no controla en qué orden llegan los datos. El escenario `casi_ordenado` muestra que no hace falta
-una entrada perfectamente ordenada para sufrir: con solo con 500 intercambios entre posiciones cercanas de 
-10.000 títulos, el BST llegó a altura 7.655 frente a 14 del AVL.
+una entrada perfectamente ordenada para sufrir: con 500 intercambios entre posiciones
+cercanas de 10.000 títulos, el BST llegó a altura 7.655 frente a 14 del AVL.
 
 ### Por qué el AVL garantiza `O(log n)`
 
@@ -235,9 +235,9 @@ es `O(log n)` **para cualquier orden de inserción**, y como búsqueda e inserci
 - **Más memoria.** Un entero extra (la altura) por nodo.
 - **Más complejidad de código.** Cuatro casos de rotación que hay que probar con cuidado.
 - **Comparación con TP2.** El árbol estático de TP2 también tiene altura mínima, pero se
-  construye ordenando los datos de una vez y no admite inserciones sin reconstruirse. El AVL
-   mantiene una altura O(log n) de forma incremental, aunque no siempre la mínima, que es lo
-  que necesita un catálogo que recibe cargas repetidas.
+  construye ordenando los datos de una vez y no admite inserciones sin reconstruirse.
+  El AVL mantiene una altura O(log n) de forma incremental, aunque no siempre la
+  mínima; eso permite recibir cargas repetidas.
 
 ## 8. Conclusión
 
