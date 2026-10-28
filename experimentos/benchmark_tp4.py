@@ -441,10 +441,9 @@ es `O(log n)` **para cualquier orden de inserción**, y como búsqueda e inserci
 - **Más memoria.** Un entero extra (la altura) por nodo.
 - **Más complejidad de código.** Cuatro casos de rotación que hay que probar con cuidado.
 - **Comparación con TP2.** El árbol estático de TP2 también tiene altura mínima, pero se
-  construye ordenando los datos de una vez y no admite inserciones sin reconstruirse. El AVL 
-  mantiene una altura O(log n) de forma incremental, aunque no siempre la mínima, que es
-  lo que necesita un catálogo que recibe cargas repetidas.
-
+  construye ordenando los datos de una vez y no admite inserciones sin reconstruirse.
+  El AVL mantiene una altura O(log n) de forma incremental, aunque no siempre la
+  mínima; eso permite recibir cargas repetidas.
 ## 8. Conclusión
 
 1. El BST de TP3 depende del orden de los datos: con entradas ordenadas, descendentes o
