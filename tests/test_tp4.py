@@ -187,14 +187,14 @@ class TestIntegracionAVLCatalogo(unittest.TestCase):
             with self.subTest(titulo=esperado.titulo):
                 self.assertIs(self.catalogo.buscar(esperado.titulo.swapcase()), esperado)
 
-    def test_filtrar_sin_criterios_no_expone_lista_interna(self):
-    cantidad = len(self.catalogo)
-    resultado = self.catalogo.filtrar()
-    self.assertEqual(len(resultado), cantidad)
-    resultado.clear()
-    self.assertEqual(len(self.catalogo), cantidad)
-    self.assertEqual(len(self.catalogo.listar()), cantidad)
-    self.assertIsNotNone(self.catalogo.buscar("Hollow Knight"))
+        def test_filtrar_sin_criterios_no_expone_lista_interna(self):
+        cantidad = len(self.catalogo)
+        resultado = self.catalogo.filtrar()
+        self.assertEqual(len(resultado), cantidad)
+        resultado.clear()
+        self.assertEqual(len(self.catalogo), cantidad)
+        self.assertEqual(len(self.catalogo.listar()), cantidad)
+        self.assertIsNotNone(self.catalogo.buscar("Hollow Knight"))
 
     def test_carga_repetida_conserva_el_primero_y_el_balance(self):
         primero = self.catalogo.buscar("Hollow Knight")
