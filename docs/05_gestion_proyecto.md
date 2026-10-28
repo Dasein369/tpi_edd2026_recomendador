@@ -20,7 +20,7 @@ retrospectiva breve al cierre.
 | TP1 — Objetos y clases | Clases del dominio, encapsulamiento, interfaces entre módulos, carga de datos, terminal, buscar/listar/filtrar | Hecho (6 tarjetas; demo pendiente) |
 | TP2 — Complejidad | Operación crítica, dos estrategias de búsqueda, mediciones con 100 a 100.000 elementos, notación O/Ω/Θ, conclusión técnica | Hecho (6 tarjetas) |
 | TP3 — Árbol binario | BST por título, búsqueda integrada, recorridos, comparación con la búsqueda secuencial, pruebas y documentación | Hecho (5 tarjetas) |
-
+| TP4 — AVL | Rotaciones, pruebas de desbalance del BST, comparación experimental y explicación de la complejidad | Hecho (4 tarjetas) |
 ## Historias de usuario
 
 **HU-01 — Recomendar (RF01)**
@@ -95,3 +95,9 @@ documentadas; aplicación identificada como versión 2.
   puede llevar búsqueda e inserción a O(n).
 - **Acción para TP4:** implementar AVL y comparar altura y búsqueda con el BST usando
   inserciones aleatorias y títulos ordenados.
+
+### Sprint TP4
+
+- **Qué salió bien:** el AVL quedó integrado al catálogo y las pruebas cubren las rotaciones, el balance, los títulos duplicados y la búsqueda. El experimento compara su altura y sus pasos de búsqueda con el BST.
+- **Qué mejorar:** había explicaciones imprecisas sobre la altura del AVL y sobre la cantidad de títulos movidos en el escenario casi ordenado. También faltaba registrar el cierre de TP4 en este documento.
+- **Acción para TP5:** revisar que el código, los resultados y las explicaciones coincidan antes de cerrar el sprint, y actualizar este documento junto con el tablero.
