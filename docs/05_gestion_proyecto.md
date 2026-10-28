@@ -22,6 +22,7 @@ retrospectiva breve al cierre.
 | TP3 — Árbol binario | BST por título, búsqueda integrada, recorridos, comparación con la búsqueda secuencial, pruebas y documentación | Hecho (5 tarjetas) |
 | TP4 — AVL | Rotaciones, pruebas de desbalance del BST, comparación experimental y explicación de la complejidad | Hecho (4 tarjetas) |
 
+
 ## Historias de usuario
 
 **HU-01 — Recomendar (RF01)**
