@@ -187,7 +187,7 @@ class TestIntegracionAVLCatalogo(unittest.TestCase):
             with self.subTest(titulo=esperado.titulo):
                 self.assertIs(self.catalogo.buscar(esperado.titulo.swapcase()), esperado)
 
-     def test_filtrar_sin_criterios_no_expone_lista_interna(self):
+    def test_filtrar_sin_criterios_no_expone_lista_interna(self):
         cantidad = len(self.catalogo)
         resultado = self.catalogo.filtrar()
         self.assertEqual(len(resultado), cantidad)
