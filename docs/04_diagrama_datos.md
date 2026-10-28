@@ -13,8 +13,8 @@ flowchart TD
 
     subgraph prod["Producción (Terminal v2)"]
         B -->|insertar en orden de carga| C["ArbolAVL"]
-        C -->|buscar por título - O(log n) garantizado| D["Catalogo.buscar()"]
-        B -->|recorrido O(n)| E["buscar_parcial / filtrar"]
+        C -->|"buscar por título - O(log n) garantizado"| D["Catalogo.buscar()"]
+        B -->|"recorrido O(n)"| E["buscar_parcial / filtrar"]
         B -->|copia de la lista| F["listar"]
     end
 
@@ -24,13 +24,13 @@ flowchart TD
 
     subgraph exp["Comparación experimental"]
         B -.->|sufijos únicos| H["dataset TP3 sintético"]
-        H -->|buscar_secuencial - O(n)| I["benchmark_tp3.py"]
-        H -->|BST dinámico - O(h)| I
+        H -->|"buscar_secuencial - O(n)"| I["benchmark_tp3.py"]
+        H -->|"BST dinámico - O(h)"| I
         I --> J["resultados_tp3.csv<br/>tp3-complejidad.md"]
         H -.->|5 órdenes de inserción| M["benchmark_tp4.py"]
         M -->|BST vs AVL| N["resultados_tp4.csv<br/>tp4-avl.md"]
         H -.->|ordenar + partir al medio| K["ArbolBusquedaBalanceada TP2"]
-        K -->|O(log n) en ese experimento| L["benchmark_tp2.py"]
+        K -->|"O(log n) en ese experimento"| L["benchmark_tp2.py"]
     end
 ```
 
