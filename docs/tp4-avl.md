@@ -35,7 +35,7 @@ de títulos únicos (construidos a partir de `datos/videojuegos.json`):
 - **ascendente**: Títulos ya ordenados de la A a la Z (catálogo exportado alfabéticamente).
 - **descendente**: Títulos ordenados de la Z a la A.
 - **zigzag**: Se alterna el menor y el mayor que quedan: A, Z, B, Y, C, X…
-- **casi_ordenado**: Ordenados, con el 5 % de los títulos intercambiados con un vecino cercano.
+- **casi_ordenado**: Ordenados, con un intercambio entre posiciones cercanas por cada 20 títulos
 - **aleatorio**: Orden mezclado con semilla fija (caso favorable, grupo de control).
 
 ## 3. AVL: invariante y rotaciones
@@ -213,8 +213,8 @@ altura 31 y 16,2 pasos promedio, contra altura 16 y
 13,6 del AVL: con orden aleatorio el BST se defiende bien en promedio, aunque su peor
 rama sigue siendo más profunda. **El BST rinde solo si el orden de entrada tiene suerte**, y
 el catálogo no controla en qué orden llegan los datos. El escenario `casi_ordenado` muestra que no hace falta
-una entrada perfectamente ordenada para sufrir: con solo el 5 % de títulos
-desordenados, el BST llegó a altura 7.655 frente a 14 del AVL.
+una entrada perfectamente ordenada para sufrir: con solo con 500 intercambios entre posiciones cercanas de 
+10.000 títulos, el BST llegó a altura 7.655 frente a 14 del AVL.
 
 ### Por qué el AVL garantiza `O(log n)`
 
@@ -235,9 +235,9 @@ es `O(log n)` **para cualquier orden de inserción**, y como búsqueda e inserci
 - **Más memoria.** Un entero extra (la altura) por nodo.
 - **Más complejidad de código.** Cuatro casos de rotación que hay que probar con cuidado.
 - **Comparación con TP2.** El árbol estático de TP2 también tiene altura mínima, pero se
-  construye ordenando los datos de una vez y no admite inserciones sin reconstruirse. El
-  AVL logra esa altura de forma incremental, que es lo que necesita un catálogo que
-  recibe cargas repetidas.
+  construye ordenando los datos de una vez y no admite inserciones sin reconstruirse. El AVL
+   mantiene una altura O(log n) de forma incremental, aunque no siempre la mínima, que es lo
+  que necesita un catálogo que recibe cargas repetidas.
 
 ## 8. Conclusión
 
