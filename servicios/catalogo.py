@@ -20,7 +20,7 @@ class Catalogo:
 
         # Se construye un índice nuevo por inserción para evitar que un error de
         # los datos deje desincronizados la lista del catálogo y el árbol. El AVL se
-        # autobalancea, así que el orden de los datos no afecta su altura.
+        # autobalancea: la altura se mantiene en O(log n) con cualquier orden de carga.
         arbol_actualizado = ArbolAVL(catalogo_actualizado)
         self._elementos = catalogo_actualizado
         self._arbol_titulos = arbol_actualizado
