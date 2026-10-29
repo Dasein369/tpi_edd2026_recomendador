@@ -1,0 +1,66 @@
+"""Árbol general: cada nodo puede tener cualquier cantidad de hijos."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import Callable, Generic, TypeVar
+
+
+T = TypeVar("T")
+
+
+@dataclass(slots=True)
+class NodoGeneral(Generic[T]):
+    valor: T
+    hijos: list[NodoGeneral[T]] = field(default_factory=list)
+
+    def agregar_hijo(self, valor: T) -> NodoGeneral[T]:
+        hijo = NodoGeneral(valor)
+        self.hijos.append(hijo)
+        return hijo
+
+class ArbolGeneral(Generic[T]):
+    def __init__(self, raiz: NodoGeneral[T] | None = None) -> None:
+        self._raiz = raiz
+
+    @property
+    def raiz(self) -> NodoGeneral[T] | None:
+        return self._raiz
+
+    def buscar(self, predicado: Callable[[T], bool]) -> NodoGeneral[T] | None:
+        """Devuelve el primer nodo que cumple el predicado, en preorden."""
+        for _, nodo in self.preorden():
+            if predicado(nodo.valor):
+                return nodo
+        return None
+
+    def preorden(self, inicio: NodoGeneral[T] | None = None) -> list[tuple[int, NodoGeneral[T]]]:
+        """Recorre raíz antes que hijos; incluye la profundidad de cada nodo."""
+        raiz = inicio if inicio is not None else self._raiz
+        if raiz is None:
+            return []
+
+ recorrido: list[tuple[int, NodoGeneral[T]]] = []
+        pendientes = [(raiz, 0)]
+        while pendientes:
+            nodo, profundidad = pendientes.pop()
+            recorrido.append((profundidad, nodo))
+            pendientes.extend((hijo, profundidad + 1) for hijo in reversed(nodo.hijos))
+        return recorrido
+
+    def postorden(self, inicio: NodoGeneral[T] | None = None) -> list[tuple[int, NodoGeneral[T]]]:
+        """Recorre hijos antes que raíz; incluye la profundidad de cada nodo."""
+        raiz = inicio if inicio is not None else self._raiz
+        if raiz is None:
+            return []
+
+        recorrido: list[tuple[int, NodoGeneral[T]]] = []
+        pendientes = [(raiz, 0, False)]
+        while pendientes:
+            nodo, profundidad, visitado = pendientes.pop()
+            if visitado:
+                recorrido.append((profundidad, nodo))
+            else:
+                pendientes.append((nodo, profundidad, True))
+                pendientes.extend((hijo, profundidad + 1, False) for hijo in reversed(nodo.hijos))
+        return recorrido
