@@ -18,6 +18,8 @@ class Terminal:
                 self._listar()
             elif opcion == "3":
                 self._filtrar()
+            elif opcion == "4":
+                self._explorar_categorias()
             elif opcion == "0":
                 print("¡Hasta la próxima!")
                 break
@@ -27,11 +29,12 @@ class Terminal:
 
     def _mostrar_menu(self) -> None:
         print("=" * 40)
-        print(" 🎮 PIXPERIENCE — TERMINAL (v2)")
+        print(" 🎮 PIXPERIENCE — TERMINAL (v3)")
         print("=" * 40)
         print("1. Buscar videojuego")
         print("2. Listar todos los videojuegos")
         print("3. Filtrar por categoría")
+        print("4. Explorar categorías")
         print("0. Salir")
         print("-" * 40)
 
@@ -60,3 +63,23 @@ class Terminal:
                 print(f"- {videojuego}")
         else:
             print(f"No hay elementos en '{genero}'.")
+
+    def _explorar_categorias(self) -> None:
+        print("Categorías disponibles:")
+        for profundidad, nombre in self._catalogo.listar_categorias():
+            print(f"{'  ' * profundidad}{nombre}")
+
+        nombre = input("Categoría a explorar (Enter para volver): ").strip()
+        if not nombre:
+            return
+
+        videojuegos = self._catalogo.explorar_categoria(nombre)
+        if videojuegos is None:
+            print(f"No existe la categoría '{nombre}'.")
+        elif not videojuegos:
+            print(f"No hay videojuegos en '{nombre}'.")
+        else:
+            print(f"Videojuegos en '{nombre}':")
+            for videojuego in videojuegos:
+                print(f"- {videojuego}")
+
