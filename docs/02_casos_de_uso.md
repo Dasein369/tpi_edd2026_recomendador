@@ -6,15 +6,15 @@
 flowchart LR
     U([👤 Jugador])
 
-    subgraph impl["Implementados en TP1 (CU02 y CU04, parcialmente)"]
+    subgraph impl["Implementados (TP1 a TP6)"]
         CU02(CU02 Buscar juego)
         CU04(CU04 Explorar juegos)
         CU06(CU06 Listar juegos)
+        CU03(CU03 Ver Top 15)
     end
 
     subgraph plan["Planificados"]
         CU01(CU01 Recomendar juegos)
-        CU03(CU03 Ver Top 15)
         CU05(CU05 Relación entre juegos)
     end
 
@@ -58,10 +58,10 @@ flowchart LR
 - **Precondición:** el catálogo está cargado.
 - **Flujo principal:**
   1. El jugador selecciona "Top 15 juegos".
-  2. El sistema pregunta qué criterio le interesa (rating, popularidad, etc.).
-  3. El jugador elige el criterio.
-  4. El sistema muestra los 15 primeros, ordenados de mayor a menor.
-- **Flujo alternativo:** si el criterio no es válido, el sistema lo informa y vuelve a preguntar.
+  2. El sistema consulta el montículo máximo mantenido por `Catalogo`.
+  3. El sistema muestra hasta 15 juegos, ordenados por rating descendente.
+- **Flujo alternativo:** si el catálogo está vacío, el sistema informa que no hay juegos para armar el ranking.
+- **Estado TP6:** implementado con prioridad `Videojuego.rating`; los empates conservan el orden de carga.
 
 ## CU04 — Explorar juegos (RF04)
 - **Actor:** Jugador
@@ -72,7 +72,7 @@ flowchart LR
   3. El jugador ingresa uno o varios.
   4. El sistema muestra los juegos que coinciden.
 - **Flujo alternativo:** si no hay coincidencias, el sistema lo informa.
-- **Estado TP1:** filtra por un único género.
+- **Estado TP5:** filtra por género exacto y permite recorrer la jerarquía de familias y categorías. Tags todavía pendientes.
 
 ## CU05 — Relación entre juegos (RF05)
 - **Actor:** Jugador

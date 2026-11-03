@@ -21,6 +21,8 @@ retrospectiva breve al cierre.
 | TP2 — Complejidad | Operación crítica, dos estrategias de búsqueda, mediciones con 100 a 100.000 elementos, notación O/Ω/Θ, conclusión técnica | Hecho (6 tarjetas) |
 | TP3 — Árbol binario | BST por título, búsqueda integrada, recorridos, comparación con la búsqueda secuencial, pruebas y documentación | Hecho (5 tarjetas) |
 | TP4 — AVL | Rotaciones, pruebas de desbalance del BST, comparación experimental y explicación de la complejidad | Hecho (4 tarjetas) |
+| TP5 — Árbol general | Jerarquía de categorías y exploración integrada en terminal | Hecho |
+| TP6 — Heap | Montículo máximo por rating, Top 15 en terminal y análisis de complejidad | Hecho |
 
 
 ## Historias de usuario
@@ -35,11 +37,12 @@ menos un juego recomendado que no sea ninguno de los ingresados.
 Como jugador quiero buscar un juego por título para ver su ficha completa.
 *Criterios TP3:* no distingue mayúsculas; si existe, muestra título, género,
 desarrollador, rating y horas jugadas; si no existe, lo informa. Los tags siguen
-pospuestos hasta que se extienda el modelo en TP5.
+pendientes para ampliar la exploración por categorías.
 
 **HU-03 — Top 15 (RF03)**
-Como jugador quiero ver el Top 15 según un criterio para decidir rápido qué jugar.
-*Criterios:* muestra exactamente 15 juegos, ordenados de mayor a menor según el criterio elegido.
+Como jugador quiero ver los juegos mejor valorados para decidir rápido qué jugar.
+*Criterios:* muestra hasta 15 juegos, ordenados por rating descendente; si hay menos
+de 15, muestra todos; si el catálogo está vacío, informa que no hay resultados.
 
 **HU-04 — Explorar (RF04)**
 Como jugador quiero explorar juegos por género o tags para descubrir opciones dentro de lo que me gusta.
@@ -63,6 +66,13 @@ binario de búsqueda dinámico, para consultar el catálogo navegando por títul
 inorder/preorder/postorder; uso desde `Catalogo.buscar()`; misma respuesta que la
 búsqueda secuencial de TP2; casos cubiertos con `unittest`; comparación y complejidad
 documentadas; aplicación identificada como versión 2.
+
+**Tarea técnica TP6 — Integrar un montículo máximo para el Top 15**
+Como jugador quiero consultar rápido los juegos mejor valorados para elegir qué jugar.
+*Criterios de aceptación:* montículo binario implementado manualmente; prioridad basada
+en `rating`; heapify al cargar; consulta de hasta 15 juegos en orden descendente sin
+mutar el montículo ni ordenar/copiar el catálogo; opción disponible en la terminal v4;
+complejidad explicada.
 
 ## Retrospectivas
 
@@ -103,3 +113,21 @@ documentadas; aplicación identificada como versión 2.
 - **Qué salió bien:** el AVL quedó integrado al catálogo y las pruebas cubren las rotaciones, el balance, los títulos duplicados y la búsqueda. El experimento compara su altura y sus pasos de búsqueda con el BST.
 - **Qué mejorar:** había explicaciones imprecisas sobre la altura del AVL y sobre la cantidad de títulos movidos en el escenario casi ordenado. También faltaba registrar el cierre de TP4 en este documento.
 - **Acción para TP5:** revisar que el código, los resultados y las explicaciones coincidan antes de cerrar el sprint, y actualizar este documento junto con el tablero.
+
+### Sprint TP5
+
+- **Qué salió bien:** el árbol general quedó conectado con `Catalogo` y permite recorrer
+  familias y géneros desde la terminal.
+- **Qué mejorar:** la documentación general conservaba estados de TP4 y no reflejaba con
+  precisión la versión activa de la terminal.
+- **Acción para TP6:** registrar la estructura nueva tanto en los diagramas como en el
+  README y mantener alineadas las versiones mostradas por la aplicación.
+
+### Sprint TP6
+
+- **Qué salió bien:** el montículo se construye al cargar el catálogo; la consulta Top-N
+  recorre solo los candidatos necesarios y preserva la estructura.
+- **Qué mejorar:** la prioridad actual usa el rating global como criterio único; la
+  popularidad y la personalización quedan para una etapa posterior.
+- **Acción para TP7:** modelar relaciones del dominio y definir con claridad el criterio
+  de conexión antes de construir el grafo.

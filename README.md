@@ -15,10 +15,13 @@ proyecto/
 ├── main.py                       # punto de entrada
 ├── estructuras/
 │   ├── arbol_binario_busqueda.py  # BST dinámico por título (TP3)
-│   └── arbol_avl.py               # AVL autobalanceado por título (TP4)
+│   ├── arbol_avl.py               # AVL autobalanceado por título (TP4)
+│   ├── arbol_general.py           # jerarquía de categorías (TP5)
+│   └── monticulo_maximo.py        # Heap binario para el Top 15 (TP6)
 ├── algoritmos/
 │   └── busqueda_secuencial.py     # estrategia de referencia de TP2/TP3
 ├── modelos/
+│   ├── categoria.py               # familia/categoría del árbol general (TP5)
 │   └── videojuego.py             # clase de dominio (solo datos)
 ├── servicios/
 │   └── catalogo.py                # lógica: cargar, buscar, listar, filtrar
@@ -42,7 +45,8 @@ proyecto/
     ├── 05_gestion_proyecto.md
     ├── tp2-complejidad.md
     ├── tp3-complejidad.md
-    └── tp4-avl.md
+    ├── tp4-avl.md
+    └── tp6-heap.md
 ```
 
 ## Requisitos
@@ -92,14 +96,17 @@ Esto levanta el menú interactivo por terminal:
 1. Buscar videojuego
 2. Listar todos los videojuegos
 3. Filtrar por categoría
+4. Explorar categorías
+5. Ver Top 15 por rating
 0. Salir
 ```
 
-La búsqueda por título usa un árbol AVL, construido por inserción. La lista del
-catálogo se conserva para listar y filtrar. El BST de TP3 se desbalancea con entradas
-ordenadas (búsqueda `O(n)` en el peor caso); el AVL se autobalancea con rotaciones y
-garantiza `O(log n)` para cualquier orden de carga. El BST se conserva para el
-experimento comparativo de TP4.
+La búsqueda por título usa un árbol AVL, construido por inserción. Las categorías se
+exploran mediante un árbol general. El Top 15 por rating se obtiene con un montículo
+binario máximo implementado en el proyecto. La lista del catálogo se conserva para
+listar y filtrar. El BST de TP3 se desbalancea con entradas ordenadas (búsqueda `O(n)` en
+el peor caso); el AVL se autobalancea con rotaciones y garantiza `O(log n)` para
+cualquier orden de carga. El BST se conserva para el experimento comparativo de TP4.
 
 ## Documentación
 
@@ -111,6 +118,7 @@ experimento comparativo de TP4.
 - [Análisis TP2](docs/tp2-complejidad.md)
 - [Comparación TP3](docs/tp3-complejidad.md)
 - [AVL frente al BST desbalanceado (TP4)](docs/tp4-avl.md)
+- [Montículo y Top 15 (TP6)](docs/tp6-heap.md)
 
 ## Correr las pruebas
 
