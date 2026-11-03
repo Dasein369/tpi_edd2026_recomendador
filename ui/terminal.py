@@ -20,6 +20,8 @@ class Terminal:
                 self._filtrar()
             elif opcion == "4":
                 self._explorar_categorias()
+            elif opcion == "5":
+                self._ver_top_15()
             elif opcion == "0":
                 print("¡Hasta la próxima!")
                 break
@@ -29,12 +31,13 @@ class Terminal:
 
     def _mostrar_menu(self) -> None:
         print("=" * 40)
-        print(" 🎮 PIXPERIENCE — TERMINAL (v3)")
+        print(" 🎮 PIXPERIENCE — TERMINAL (v4)")
         print("=" * 40)
         print("1. Buscar videojuego")
         print("2. Listar todos los videojuegos")
         print("3. Filtrar por categoría")
         print("4. Explorar categorías")
+        print("5. Ver Top 15 por rating")
         print("0. Salir")
         print("-" * 40)
 
@@ -82,4 +85,14 @@ class Terminal:
             print(f"Videojuegos en '{nombre}':")
             for videojuego in videojuegos:
                 print(f"- {videojuego}")
+
+    def _ver_top_15(self) -> None:
+        videojuegos = self._catalogo.top_n(15)
+        if not videojuegos:
+            print("No hay videojuegos para armar el ranking.")
+            return
+
+        print("Top 15 de videojuegos por rating:")
+        for puesto, videojuego in enumerate(videojuegos, start=1):
+            print(f"{puesto:>2}. {videojuego.titulo} — ⭐ {videojuego.rating:.1f}")
 
