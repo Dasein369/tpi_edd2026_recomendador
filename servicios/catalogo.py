@@ -2,6 +2,7 @@ import json
 
 from estructuras.arbol_avl import ArbolAVL
 from estructuras.arbol_general import ArbolGeneral, NodoGeneral
+from estructuras.monticulo_maximo import MonticuloMaximo
 from modelos.categoria import Categoria
 from modelos.videojuego import Videojuego
 
@@ -21,6 +22,7 @@ class Catalogo:
         self._elementos: list[Videojuego] = []
         self._arbol_titulos = ArbolAVL()
         self._arbol_categorias = self._construir_arbol_categorias([])
+        self._monticulo_rating = MonticuloMaximo(prioridad=lambda juego: juego.rating)
 
     @staticmethod
     def _construir_arbol_categorias(videojuegos: list[Videojuego]) -> ArbolGeneral[Categoria]:
@@ -57,9 +59,13 @@ class Catalogo:
         # autobalancea: la altura se mantiene en O(log n) con cualquier orden de carga.
         arbol_actualizado = ArbolAVL(catalogo_actualizado)
         categorias_actualizadas = self._construir_arbol_categorias(catalogo_actualizado)
+        monticulo_rating_actualizado = MonticuloMaximo(
+            catalogo_actualizado, prioridad=lambda juego: juego.rating
+        )
         self._elementos = catalogo_actualizado
         self._arbol_titulos = arbol_actualizado
         self._arbol_categorias = categorias_actualizadas
+        self._monticulo_rating = monticulo_rating_actualizado
 
     def buscar(self, titulo: str) -> Videojuego | None:
         """Búsqueda por título con el AVL integrado, O(log n) garantizado, sin distinguir mayúsculas."""
@@ -88,6 +94,10 @@ class Catalogo:
             for _, actual in self._arbol_categorias.preorden(nodo)
             for videojuego in actual.valor.videojuegos
         ]
+
+    def top_n(self, cantidad: int = 15) -> list[Videojuego]:
+        """Devuelve hasta N juegos por rating, de mayor a menor."""
+        return self._monticulo_rating.mayores(cantidad)
 
     def filtrar(self, genero: str = None, desarrollador: str = None, rating_minimo: float = None) -> list[Videojuego]:
         resultado = list(self._elementos)
