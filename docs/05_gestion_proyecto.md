@@ -23,6 +23,7 @@ retrospectiva breve al cierre.
 | TP4 — AVL | Rotaciones, pruebas de desbalance del BST, comparación experimental y explicación de la complejidad | Hecho (4 tarjetas) |
 | TP5 — Árbol general | Jerarquía de categorías y exploración integrada en terminal | Hecho |
 | TP6 — Heap | Montículo máximo por rating, Top 15 en terminal y análisis de complejidad | Hecho |
+| TP7 — Grafos | Modelo del grafo (vértices, aristas, tipo), lista de adyacencia, consultas de relacionados y relación entre dos juegos, terminal v5 | Hecho |
 
 
 ## Historias de usuario
@@ -73,6 +74,15 @@ Como jugador quiero consultar rápido los juegos mejor valorados para elegir qu�
 en `rating`; heapify al cargar; consulta de hasta 15 juegos en orden descendente sin
 mutar el montículo ni ordenar/copiar el catálogo; opción disponible en la terminal v4;
 complejidad explicada.
+
+**Tarea técnica TP7 — Modelar y construir el grafo de relaciones**
+Como jugador quiero ver qué juegos se parecen a uno que me gustó, y por qué, para
+descubrir qué jugar a continuación.
+*Criterios de aceptación:* vértice = videojuego; arista = comparten género, familia o
+desarrollador; grafo no dirigido y pesado, con la elección documentada; lista de
+adyacencia justificada con la densidad medida; consultas de juegos relacionados y de
+relación entre dos juegos desde la terminal v5; sin aristas a sí mismo ni duplicadas;
+casos cubiertos con `unittest`; complejidad documentada en `docs/tp7-grafo.md`.
 
 ## Retrospectivas
 

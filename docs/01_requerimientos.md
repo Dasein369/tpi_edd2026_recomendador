@@ -24,7 +24,7 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 | RF02 | El sistema debe permitir buscar un juego por título y ver su ficha completa. | TP1; eficiencia en TP2–TP4 | Implementado: búsqueda exacta sin distinguir mayúsculas mediante AVL; muestra título, género, desarrollador, rating y horas jugadas. |
 | RF03 | El sistema debe mostrar el Top 15 de juegos según un criterio (rating, popularidad, etc.). | TP6 | Implementado: usa un montículo binario máximo por rating y muestra hasta 15 juegos en orden descendente. |
 | RF04 | El sistema debe permitir explorar juegos por género o categoría. | TP1 (filtro); TP5 (jerarquía) | Parcial: filtra por género exacto y explora familias/categorías en un árbol general. Faltan tags. |
-| RF05 | El sistema debe mostrar qué tan relacionados están dos o más juegos elegidos por el usuario. | TP7–TP8 | Pendiente |
+| RF05 | El sistema debe mostrar qué tan relacionados están dos o más juegos elegidos por el usuario. | TP7–TP8 | Parcial: la terminal v5 muestra la relación directa entre dos juegos (peso y motivo) mediante un grafo. Faltan las relaciones indirectas y comparar más de dos juegos (TP8). |
 
 ### Requerimientos de apoyo (surgidos en TP1)
 

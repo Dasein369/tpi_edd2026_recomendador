@@ -2,9 +2,11 @@ import json
 
 from estructuras.arbol_avl import ArbolAVL
 from estructuras.arbol_general import ArbolGeneral, NodoGeneral
+from estructuras.grafo import Grafo
 from estructuras.monticulo_maximo import MonticuloMaximo
 from modelos.categoria import Categoria
 from modelos.videojuego import Videojuego
+from servicios.relaciones import Relacion, calcular_relacion, construir_grafo
 
 
 JERARQUIA_GENEROS = {
@@ -12,6 +14,12 @@ JERARQUIA_GENEROS = {
     "Rol y estrategia": ("RPG", "Estrategia", "MOBA"),
     "Creatividad y lógica": ("Simulacion", "Sandbox", "Puzzle"),
     "Social y deportes": ("Fiesta", "Deportes"),
+}
+
+FAMILIA_POR_GENERO = {
+    genero.casefold(): familia
+    for familia, generos in JERARQUIA_GENEROS.items()
+    for genero in generos
 }
 
 
@@ -23,6 +31,7 @@ class Catalogo:
         self._arbol_titulos = ArbolAVL()
         self._arbol_categorias = self._construir_arbol_categorias([])
         self._monticulo_rating = MonticuloMaximo(prioridad=lambda juego: juego.rating)
+        self._grafo: Grafo[Videojuego] = Grafo()
 
     @staticmethod
     def _construir_arbol_categorias(videojuegos: list[Videojuego]) -> ArbolGeneral[Categoria]:
@@ -62,10 +71,12 @@ class Catalogo:
         monticulo_rating_actualizado = MonticuloMaximo(
             catalogo_actualizado, prioridad=lambda juego: juego.rating
         )
+        grafo_actualizado = construir_grafo(catalogo_actualizado, FAMILIA_POR_GENERO)
         self._elementos = catalogo_actualizado
         self._arbol_titulos = arbol_actualizado
         self._arbol_categorias = categorias_actualizadas
         self._monticulo_rating = monticulo_rating_actualizado
+        self._grafo = grafo_actualizado
 
     def buscar(self, titulo: str) -> Videojuego | None:
         """Búsqueda por título con el AVL integrado, O(log n) garantizado, sin distinguir mayúsculas."""
@@ -98,6 +109,38 @@ class Catalogo:
     def top_n(self, cantidad: int = 15) -> list[Videojuego]:
         """Devuelve hasta N juegos por rating, de mayor a menor."""
         return self._monticulo_rating.mayores(cantidad)
+
+    def juegos_relacionados(
+        self, videojuego: Videojuego, limite: int | None = None
+    ) -> list[tuple[Videojuego, Relacion]]:
+        """Vecinos del juego en el grafo, del más al menos parecido.
+
+        Ordena por peso y, a igual peso, por rating; si todo empata conserva el orden
+        de carga. Cuesta O(d log d) con d = cantidad de vecinos, sin recorrer el
+        catálogo completo. Lanza KeyError si el juego no pertenece al catálogo.
+        """
+        vecinos = self._grafo.vecinos(videojuego)
+        ordenados = sorted(vecinos.items(), key=lambda par: (-par[1], -par[0].rating))
+        if limite is not None:
+            ordenados = ordenados[:limite]
+        return [
+            (otro, calcular_relacion(videojuego, otro, FAMILIA_POR_GENERO))
+            for otro, _ in ordenados
+        ]
+
+    def relacion_entre(self, a: Videojuego, b: Videojuego) -> Relacion | None:
+        """Relación directa entre dos juegos, o None si no están conectados. O(1)."""
+        if not self._grafo.tiene_arista(a, b):
+            return None
+        return calcular_relacion(a, b, FAMILIA_POR_GENERO)
+
+    def resumen_red(self) -> dict[str, float]:
+        """Métricas del grafo de relaciones: vértices, aristas y densidad."""
+        return {
+            "vertices": len(self._grafo),
+            "aristas": self._grafo.cantidad_aristas(),
+            "densidad": self._grafo.densidad(),
+        }
 
     def filtrar(self, genero: str = None, desarrollador: str = None, rating_minimo: float = None) -> list[Videojuego]:
         resultado = list(self._elementos)

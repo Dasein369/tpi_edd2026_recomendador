@@ -68,13 +68,13 @@ class TestIntegracionTop15(unittest.TestCase):
         self.assertEqual(segundo, esperado)
         self.assertEqual(len(primero), 15)
 
-    def test_terminal_expone_el_top_15_en_version_4(self):
+    def test_terminal_expone_el_top_15(self):
         salida = io.StringIO()
         with patch("builtins.input", side_effect=["5", "0"]), patch("sys.stdout", salida):
             Terminal(self.catalogo).iniciar()
 
         texto = salida.getvalue()
-        self.assertIn("TERMINAL (v4)", texto)
+        self.assertIn("TERMINAL (v5)", texto)
         self.assertIn("5. Ver Top 15 por rating", texto)
         self.assertIn("Top 15 de videojuegos por rating:", texto)
         self.assertIn("The Legend of Zelda: Breath of the Wild", texto)

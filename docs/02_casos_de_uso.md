@@ -6,16 +6,16 @@
 flowchart LR
     U([👤 Jugador])
 
-    subgraph impl["Implementados (TP1 a TP6)"]
+    subgraph impl["Implementados (TP1 a TP7)"]
         CU02(CU02 Buscar juego)
         CU04(CU04 Explorar juegos)
         CU06(CU06 Listar juegos)
         CU03(CU03 Ver Top 15)
+        CU05(CU05 Relación entre juegos)
     end
 
     subgraph plan["Planificados"]
         CU01(CU01 Recomendar juegos)
-        CU05(CU05 Relación entre juegos)
     end
 
     U --- CU01
@@ -84,6 +84,12 @@ flowchart LR
   4. El sistema muestra las relaciones encontradas entre pares, indicando el motivo
      (género, clasificación, tag en común).
 - **Flujo alternativo:** si un par no tiene relación, el sistema lo indica; si un título no existe, lo informa.
+- **Estado TP7:** implementado como opciones 6 y 7 de la terminal v5, sobre un grafo no
+  dirigido y pesado (`estructuras/grafo.py`). La opción 6 lista los juegos relacionados
+  con uno; la opción 7 compara dos títulos y muestra el peso y el motivo (mismo género,
+  mismo desarrollador o misma familia). Si no hay arista, informa que no hay relación
+  directa. Los tags, la comparación de más de dos juegos y las relaciones indirectas
+  quedan para TP8.
 
 ## CU06 — Listar juegos (RF07)
 - **Actor:** Jugador
