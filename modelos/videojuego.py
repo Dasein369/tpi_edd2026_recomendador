@@ -35,3 +35,4 @@ class Videojuego:
 
     def __repr__(self) -> str:
         return f"{self._titulo} ({self._genero}) ⭐{self._rating}"
+
