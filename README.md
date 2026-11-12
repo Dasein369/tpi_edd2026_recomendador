@@ -18,7 +18,7 @@ proyecto/
 │   ├── arbol_avl.py               # AVL autobalanceado por título (TP4)
 │   ├── arbol_general.py           # jerarquía de categorías (TP5)
 │   ├── monticulo_maximo.py        # Heap binario para el Top 15 (TP6)
-│   └── grafo.py                   # grafo no dirigido y pesado, lista de adyacencia (TP7)
+│   └── grafo.py                   # grafo de TP7 y recorridos BFS/DFS de TP8
 ├── algoritmos/
 │   └── busqueda_secuencial.py     # estrategia de referencia de TP2/TP3
 ├── modelos/
@@ -41,7 +41,8 @@ proyecto/
 │   ├── test_tp4.py                # AVL: rotaciones, invariantes, integración
 │   ├── test_tp5.py                # árbol general de categorías
 │   ├── test_tp6.py                # montículo y Top 15
-│   └── test_tp7.py                # grafo, relaciones y terminal v5
+│   ├── test_tp7.py                # grafo y relaciones
+│   └── test_tp8.py                # BFS, DFS y terminal v6
 └── docs/
     ├── 01_requerimientos.md
     ├── 02_casos_de_uso.md
@@ -52,7 +53,8 @@ proyecto/
     ├── tp3-complejidad.md
     ├── tp4-avl.md
     ├── tp6-heap.md
-    └── tp7-grafo.md
+    ├── tp7-grafo.md
+    └── tp8-recorridos.md
 ```
 
 ## Requisitos
@@ -106,6 +108,8 @@ Esto levanta el menú interactivo por terminal:
 5. Ver Top 15 por rating
 6. Ver juegos relacionados
 7. Relación entre dos juegos
+8. Ver cadena de relaciones (BFS)
+9. Explorar red en profundidad (DFS)
 0. Salir
 ```
 
@@ -119,6 +123,10 @@ listar y filtrar. El BST de TP3 se desbalancea con entradas ordenadas (búsqueda
 el peor caso); el AVL se autobalancea con rotaciones y garantiza `O(log n)` para
 cualquier orden de carga. El BST se conserva para el experimento comparativo de TP4.
 
+La opción 8 usa BFS para encontrar una cadena con la menor cantidad de relaciones
+entre dos juegos; no minimiza la suma de los pesos de similitud. La opción 9 usa DFS
+para recorrer en profundidad todos los juegos alcanzables desde uno.
+
 ## Documentación
 
 - [Requerimientos](docs/01_requerimientos.md)
@@ -131,6 +139,7 @@ cualquier orden de carga. El BST se conserva para el experimento comparativo de 
 - [AVL frente al BST desbalanceado (TP4)](docs/tp4-avl.md)
 - [Montículo y Top 15 (TP6)](docs/tp6-heap.md)
 - [Grafo de relaciones (TP7)](docs/tp7-grafo.md)
+- [Recorridos BFS y DFS (TP8)](docs/tp8-recorridos.md)
 
 ## Correr las pruebas
 
