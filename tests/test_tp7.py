@@ -166,9 +166,9 @@ class TestTerminalV5(unittest.TestCase):
             Terminal(self.catalogo).iniciar()
         return salida.getvalue()
 
-    def test_menu_v5_y_juegos_relacionados(self):
+    def test_menu_actual_y_juegos_relacionados(self):
         texto = self.ejecutar(["6", "elden ring", "0"])
-        self.assertIn("TERMINAL (v5)", texto)
+        self.assertIn("TERMINAL (v6)", texto)
         self.assertIn("6. Ver juegos relacionados", texto)
         self.assertIn("7. Relación entre dos juegos", texto)
         self.assertIn("Juegos relacionados con 'Elden Ring':", texto)
