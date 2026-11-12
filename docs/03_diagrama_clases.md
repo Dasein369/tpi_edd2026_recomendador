@@ -10,12 +10,14 @@ classDiagram
         -id: int
         -titulo: str
         -genero: str
+        -tags: tuple
         -desarrollador: str
         -rating: float
         -horas_jugadas: int
         +id() int
         +titulo() str
         +genero() str
+        +tags() tuple
         +desarrollador() str
         +rating() float
         +horas_jugadas() int
@@ -36,7 +38,7 @@ classDiagram
         +resumen_red() dict
         +buscar_parcial(texto) list
         +listar() list
-        +filtrar(genero, desarrollador, rating_minimo) list
+        +filtrar(genero, desarrollador, rating_minimo, tag) list
         +len() int
     }
 
@@ -172,8 +174,7 @@ classDiagram
 ## Diferencias respecto del diagrama inicial (TP0)
 
 - La clase de dominio se llama `Videojuego` (en TP0 figuraba como `Juego`).
-- `Videojuego` todavía no tiene el atributo `tags`; se mantiene pendiente para ampliar
-  RF04 y RF05.
+- `Videojuego` incorpora `tags` en TP7 para ampliar RF04 y RF05.
 - `ArbolGeneral` se integró en TP5, `MonticuloMaximo` en TP6 y `Grafo` en TP7. El
   `Recomendador` se incorpora en etapas posteriores. Ver `04_diagrama_datos.md`.
 - Se agregaron `Catalogo` y `Terminal`, que en TP0 no estaban diagramadas.
