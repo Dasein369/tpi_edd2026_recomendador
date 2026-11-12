@@ -24,6 +24,10 @@ retrospectiva breve al cierre.
 | TP5 — Árbol general | Jerarquía de categorías y exploración integrada en terminal | Hecho |
 | TP6 — Heap | Montículo máximo por rating, Top 15 en terminal y análisis de complejidad | Hecho |
 | TP7 — Grafos | Modelo del grafo (vértices, aristas, tipo), lista de adyacencia, consultas de relacionados y relación entre dos juegos, terminal v5 | Hecho |
+| TP8 — BFS y DFS | Dos consultas reales sobre el grafo, análisis y terminal v6 | Pendiente |
+| TP10 — Integración y defensa | Producto final, documentación, demo y defensa | Pendiente |
+
+El profesor indicó que TP9 no se requiere para esta entrega.
 
 
 ## Historias de usuario
@@ -37,8 +41,7 @@ menos un juego recomendado que no sea ninguno de los ingresados.
 **HU-02 — Buscar (RF02)**
 Como jugador quiero buscar un juego por título para ver su ficha completa.
 *Criterios TP3:* no distingue mayúsculas; si existe, muestra título, género,
-desarrollador, rating y horas jugadas; si no existe, lo informa. Los tags siguen
-pendientes para ampliar la exploración por categorías.
+desarrollador, rating, horas jugadas y tags; si no existe, lo informa.
 
 **HU-03 — Top 15 (RF03)**
 Como jugador quiero ver los juegos mejor valorados para decidir rápido qué jugar.
@@ -78,8 +81,8 @@ complejidad explicada.
 **Tarea técnica TP7 — Modelar y construir el grafo de relaciones**
 Como jugador quiero ver qué juegos se parecen a uno que me gustó, y por qué, para
 descubrir qué jugar a continuación.
-*Criterios de aceptación:* vértice = videojuego; arista = comparten género, familia o
-desarrollador; grafo no dirigido y pesado, con la elección documentada; lista de
+*Criterios de aceptación:* vértice = videojuego; arista = comparten género, familia,
+desarrollador o tags; grafo no dirigido y pesado, con la elección documentada; lista de
 adyacencia justificada con la densidad medida; consultas de juegos relacionados y de
 relación entre dos juegos desde la terminal v5; sin aristas a sí mismo ni duplicadas;
 casos cubiertos con `unittest`; complejidad documentada en `docs/tp7-grafo.md`.
@@ -141,3 +144,12 @@ casos cubiertos con `unittest`; complejidad documentada en `docs/tp7-grafo.md`.
   popularidad y la personalización quedan para una etapa posterior.
 - **Acción para TP7:** modelar relaciones del dominio y definir con claridad el criterio
   de conexión antes de construir el grafo.
+
+### Sprint TP7
+
+- **Qué salió bien:** el grafo quedó integrado al catálogo y a la terminal; las pruebas
+  cubren simetría, pesos, consultas y consistencia tras una carga inválida.
+- **Qué mejorar:** la primera versión de la regla omitía los tags acordados para esta
+  etapa y los documentos conservaban ejemplos y estados anteriores.
+- **Acción para TP8:** definir una consulta real para BFS y otra para DFS, integrarlas
+  en la terminal y documentar cuándo conviene cada recorrido.
