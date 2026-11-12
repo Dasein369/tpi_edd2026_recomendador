@@ -74,7 +74,7 @@ class TestIntegracionTop15(unittest.TestCase):
             Terminal(self.catalogo).iniciar()
 
         texto = salida.getvalue()
-        self.assertIn("TERMINAL (v5)", texto)
+        self.assertIn("TERMINAL (v6)", texto)
         self.assertIn("5. Ver Top 15 por rating", texto)
         self.assertIn("Top 15 de videojuegos por rating:", texto)
         self.assertIn("The Legend of Zelda: Breath of the Wild", texto)
