@@ -135,6 +135,14 @@ class Catalogo:
             return None
         return calcular_relacion(a, b, FAMILIA_POR_GENERO)
 
+    def camino_de_relaciones(self, origen: Videojuego, destino: Videojuego) -> list[Videojuego] | None:
+        """Cadena más corta en cantidad de relaciones; BFS no usa los pesos."""
+        return self._grafo.camino_bfs(origen, destino)
+
+    def explorar_red(self, origen: Videojuego) -> list[Videojuego]:
+        """Todos los juegos alcanzables en orden de recorrido DFS."""
+        return self._grafo.recorrido_dfs(origen)
+
     def resumen_red(self) -> dict[str, float]:
         """Métricas del grafo de relaciones: vértices, aristas y densidad."""
         return {
