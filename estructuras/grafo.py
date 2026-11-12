@@ -1,5 +1,6 @@
 """Grafo no dirigido y pesado implementado con lista de adyacencia."""
 
+from collections import deque
 from collections.abc import Hashable, Iterator
 from typing import Generic, TypeVar
 
@@ -52,6 +53,50 @@ class Grafo(Generic[V]):
     def grado(self, vertice: V) -> int:
         """Cantidad de aristas del vértice, en O(1)."""
         return len(self._vecinos(vertice))
+
+    def camino_bfs(self, origen: V, destino: V) -> list[V] | None:
+        """Camino con menos aristas entre dos vértices, o None si no existe.
+
+        BFS considera cada arista como un paso; no minimiza la suma de pesos.
+        Tiempo y espacio: O(V + E). Lanza KeyError si falta un extremo.
+        """
+        self._vecinos(origen)
+        self._vecinos(destino)
+        anteriores: dict[V, V | None] = {origen: None}
+        pendientes = deque([origen])
+
+        while pendientes:
+            actual = pendientes.popleft()
+            if actual == destino:
+                camino: list[V] = []
+                while actual is not None:
+                    camino.append(actual)
+                    actual = anteriores[actual]
+                return camino[::-1]
+            for vecino in self._adyacencia[actual]:
+                if vecino not in anteriores:
+                    anteriores[vecino] = actual
+                    pendientes.append(vecino)
+        return None
+
+    def recorrido_dfs(self, origen: V) -> list[V]:
+        """Visita en profundidad los vértices alcanzables desde origen.
+
+        Usa una pila para no depender del límite de recursión. Conserva el orden
+        de inserción de los vecinos. Tiempo y espacio: O(V + E).
+        """
+        self._vecinos(origen)
+        visitados: set[V] = set()
+        recorrido: list[V] = []
+        pendientes = [origen]
+        while pendientes:
+            actual = pendientes.pop()
+            if actual in visitados:
+                continue
+            visitados.add(actual)
+            recorrido.append(actual)
+            pendientes.extend(reversed(self._adyacencia[actual]))
+        return recorrido
 
     def vertices(self) -> list[V]:
         return list(self._adyacencia)
