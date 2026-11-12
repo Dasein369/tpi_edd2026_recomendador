@@ -46,7 +46,7 @@ flowchart LR
   1. El jugador selecciona "Buscar juego".
   2. El sistema pregunta qué juego desea buscar.
   3. El jugador ingresa el título.
-  4. El sistema consulta el AVL por título, sin distinguir mayúsculas, y muestra título, género, desarrollador, rating y horas jugadas. Los tags se incorporarán cuando se extienda el modelo en TP5.
+  4. El sistema consulta el AVL por título, sin distinguir mayúsculas, y muestra título, género, desarrollador, rating, horas jugadas y tags.
 - **Flujo alternativo:** si no existe, el sistema informa que no se encontró el título.
 - **Estado TP4:** la búsqueda en producción está integrada con `ArbolAVL`
   (`estructuras/arbol_avl.py`), que reemplazó al BST de TP3 (`ArbolBinarioBusqueda`)
@@ -68,11 +68,11 @@ flowchart LR
 - **Precondición:** el catálogo está cargado.
 - **Flujo principal:**
   1. El jugador selecciona "Explorar juegos".
-  2. El sistema pregunta qué géneros o tags le interesan.
-  3. El jugador ingresa uno o varios.
+  2. El sistema pregunta qué género o tag le interesa.
+  3. El jugador ingresa uno.
   4. El sistema muestra los juegos que coinciden.
 - **Flujo alternativo:** si no hay coincidencias, el sistema lo informa.
-- **Estado TP5:** filtra por género exacto y permite recorrer la jerarquía de familias y categorías. Tags todavía pendientes.
+- **Estado TP7:** filtra por género o tag y permite recorrer la jerarquía de familias y categorías.
 
 ## CU05 — Relación entre juegos (RF05)
 - **Actor:** Jugador
@@ -87,9 +87,9 @@ flowchart LR
 - **Estado TP7:** implementado como opciones 6 y 7 de la terminal v5, sobre un grafo no
   dirigido y pesado (`estructuras/grafo.py`). La opción 6 lista los juegos relacionados
   con uno; la opción 7 compara dos títulos y muestra el peso y el motivo (mismo género,
-  mismo desarrollador o misma familia). Si no hay arista, informa que no hay relación
-  directa. Los tags, la comparación de más de dos juegos y las relaciones indirectas
-  quedan para TP8.
+  mismo desarrollador, misma familia o tags compartidos). Si no hay arista, informa
+  que no hay relación directa. La comparación de más de dos juegos y las relaciones
+  indirectas quedan para TP8.
 
 ## CU06 — Listar juegos (RF07)
 - **Actor:** Jugador
