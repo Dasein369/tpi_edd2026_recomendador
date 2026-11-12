@@ -26,6 +26,10 @@ class Terminal:
                 self._ver_relacionados()
             elif opcion == "7":
                 self._ver_relacion_entre_dos()
+            elif opcion == "8":
+                self._ver_camino_de_relaciones()
+            elif opcion == "9":
+                self._explorar_red()
             elif opcion == "0":
                 print("¡Hasta la próxima!")
                 break
@@ -35,7 +39,7 @@ class Terminal:
 
     def _mostrar_menu(self) -> None:
         print("=" * 40)
-        print(" 🎮 PIXPERIENCE — TERMINAL (v5)")
+        print(" 🎮 PIXPERIENCE — TERMINAL (v6)")
         print("=" * 40)
         print("1. Buscar videojuego")
         print("2. Listar todos los videojuegos")
@@ -44,6 +48,8 @@ class Terminal:
         print("5. Ver Top 15 por rating")
         print("6. Ver juegos relacionados")
         print("7. Relación entre dos juegos")
+        print("8. Ver cadena de relaciones (BFS)")
+        print("9. Explorar red en profundidad (DFS)")
         print("0. Salir")
         print("-" * 40)
 
@@ -144,3 +150,37 @@ class Terminal:
             print(f"'{primero.titulo}' y '{segundo.titulo}' están relacionados (similitud {relacion.peso}):")
             for motivo in relacion.motivos:
                 print(f"- {motivo}")
+
+    def _ver_camino_de_relaciones(self) -> None:
+        titulo_a = input("Juego de origen: ").strip()
+        origen = self._catalogo.buscar(titulo_a)
+        if origen is None:
+            print(f"No encontramos '{titulo_a}'.")
+            return
+
+        titulo_b = input("Juego de destino: ").strip()
+        destino = self._catalogo.buscar(titulo_b)
+        if destino is None:
+            print(f"No encontramos '{titulo_b}'.")
+            return
+
+        camino = self._catalogo.camino_de_relaciones(origen, destino)
+        if camino is None:
+            print(f"No hay cadena de relaciones entre '{origen.titulo}' y '{destino.titulo}'.")
+        elif len(camino) == 1:
+            print("Elegiste el mismo videojuego como origen y destino.")
+        else:
+            print(f"Cadena más corta ({len(camino) - 1} relaciones):")
+            print(" → ".join(juego.titulo for juego in camino))
+
+    def _explorar_red(self) -> None:
+        titulo = input("Juego de origen: ").strip()
+        origen = self._catalogo.buscar(titulo)
+        if origen is None:
+            print(f"No encontramos '{titulo}'.")
+            return
+
+        recorrido = self._catalogo.explorar_red(origen)
+        print(f"Juegos alcanzables desde '{origen.titulo}' (DFS):")
+        for numero, juego in enumerate(recorrido, start=1):
+            print(f"{numero:>2}. {juego.titulo}")
