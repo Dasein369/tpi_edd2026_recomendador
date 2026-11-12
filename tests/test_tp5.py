@@ -67,7 +67,7 @@ class TestIntegracionCategorias(unittest.TestCase):
             Terminal(self.catalogo).iniciar()
 
         texto = salida.getvalue()
-        self.assertIn("TERMINAL (v5)", texto)
+        self.assertIn("TERMINAL (v6)", texto)
         self.assertIn("Videojuegos en 'Rol y estrategia':", texto)
         self.assertIn("Elden Ring", texto)
         self.assertIn("Civilization VI", texto)
