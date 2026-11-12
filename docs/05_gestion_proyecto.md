@@ -24,7 +24,7 @@ retrospectiva breve al cierre.
 | TP5 — Árbol general | Jerarquía de categorías y exploración integrada en terminal | Hecho |
 | TP6 — Heap | Montículo máximo por rating, Top 15 en terminal y análisis de complejidad | Hecho |
 | TP7 — Grafos | Modelo del grafo (vértices, aristas, tipo), lista de adyacencia, consultas de relacionados y relación entre dos juegos, terminal v5 | Hecho |
-| TP8 — BFS y DFS | Dos consultas reales sobre el grafo, análisis y terminal v6 | Pendiente |
+| TP8 — BFS y DFS | Cadena con menos relaciones, exploración en profundidad, análisis y terminal v6 | Implementado en código; revisión del equipo pendiente |
 | TP10 — Integración y defensa | Producto final, documentación, demo y defensa | Pendiente |
 
 El profesor indicó que TP9 no se requiere para esta entrega.
@@ -86,6 +86,14 @@ desarrollador o tags; grafo no dirigido y pesado, con la elección documentada; 
 adyacencia justificada con la densidad medida; consultas de juegos relacionados y de
 relación entre dos juegos desde la terminal v5; sin aristas a sí mismo ni duplicadas;
 casos cubiertos con `unittest`; complejidad documentada en `docs/tp7-grafo.md`.
+
+**Tarea técnica TP8 — Recorrer el grafo con BFS y DFS**
+Como jugador quiero conocer cómo se conectan dos juegos y explorar toda la red desde
+uno para descubrir relaciones indirectas.
+*Criterios de aceptación:* BFS devuelve una cadena con la menor cantidad de aristas;
+DFS visita cada juego alcanzable una sola vez; ambos manejan vértices aislados y
+catálogos vacíos; dos consultas disponibles en la terminal v6; pruebas automatizadas
+y análisis en `docs/tp8-recorridos.md`.
 
 ## Retrospectivas
 
