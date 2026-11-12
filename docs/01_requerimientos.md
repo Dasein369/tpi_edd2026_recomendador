@@ -21,9 +21,9 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 | ID | Requerimiento | Etapa prevista | Estado actual |
 |----|---------------|-----------------|---------------|
 | RF01 | El sistema debe recomendar un juego a partir de uno o varios juegos que le gustaron al usuario. | TP7–TP8 | Pendiente |
-| RF02 | El sistema debe permitir buscar un juego por título y ver su ficha completa. | TP1; eficiencia en TP2–TP4 | Implementado: búsqueda exacta sin distinguir mayúsculas mediante AVL; muestra título, género, desarrollador, rating y horas jugadas. |
+| RF02 | El sistema debe permitir buscar un juego por título y ver su ficha completa. | TP1; eficiencia en TP2–TP4 | Implementado: búsqueda exacta sin distinguir mayúsculas mediante AVL; muestra título, género, desarrollador, rating, horas jugadas y tags. |
 | RF03 | El sistema debe mostrar el Top 15 de juegos según un criterio (rating, popularidad, etc.). | TP6 | Implementado: usa un montículo binario máximo por rating y muestra hasta 15 juegos en orden descendente. |
-| RF04 | El sistema debe permitir explorar juegos por género o categoría. | TP1 (filtro); TP5 (jerarquía) | Parcial: filtra por género exacto y explora familias/categorías en un árbol general. Faltan tags. |
+| RF04 | El sistema debe permitir explorar juegos por género, tag o categoría. | TP1 (filtro); TP5 (jerarquía); TP7 (tags) | Implementado: filtra por género o tag y explora familias/categorías en un árbol general. |
 | RF05 | El sistema debe mostrar qué tan relacionados están dos o más juegos elegidos por el usuario. | TP7–TP8 | Parcial: la terminal v5 muestra la relación directa entre dos juegos (peso y motivo) mediante un grafo. Faltan las relaciones indirectas y comparar más de dos juegos (TP8). |
 
 ### Requerimientos de apoyo (surgidos en TP1)
@@ -68,8 +68,8 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 ## 6. Decisiones pendientes
 
 - Usar la API real de Steam o un perfil de usuario simulado.
-- Incorporar `tags` al modelo `Videojuego` (hoy no los tiene; son necesarios para ampliar
-  RF04 y RF05). Se mantiene en el Backlog de Trello.
+- Los `tags` se incorporaron al modelo y al grafo en TP7 para ampliar RF04 y RF05.
+  Queda decidir si se reemplaza el catálogo de prueba por datos reales de Steam.
 - El árbol balanceado usado en el experimento de TP2 (`ArbolBusquedaBalanceada`) no se
   reutiliza en TP3: se construye ordenando los datos y particionando recursivamente, por
   lo que nunca se desbalancea. TP3 requiere un árbol construido por inserción uno a uno,
