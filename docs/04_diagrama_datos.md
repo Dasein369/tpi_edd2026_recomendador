@@ -7,7 +7,7 @@ mantiene un AVL construido por inserción en el orden de los datos; se autobalan
 por lo que mantiene altura O(log n) con cualquier orden de carga, aunque la altura
 exacta puede variar. El árbol general organiza las familias y categorías. El
 montículo máximo se construye al cargar los datos y mantiene el ranking por rating.
-El grafo de relaciones conecta juegos que comparten género, familia o desarrollador.
+El grafo de relaciones conecta juegos que comparten género, familia, desarrollador o tags.
 El BST de TP3 y el árbol estático de TP2 quedan como referencia experimental.
 
 ```mermaid
@@ -22,8 +22,8 @@ flowchart TD
         B -->|heapify O(n), prioridad rating| P["MonticuloMaximo"]
         P -->|"Top k: O(k log k), sin mutar el heap"| Q["Catalogo.top_n(15)"]
         B -->|agrupación por familia y género| R["ArbolGeneral de categorías"]
-        B -->|"comparar pares O(n²), peso por similitud"| S["Grafo no dirigido y pesado"]
-        S -->|"vecinos O(d log d), relación O(1)"| T["juegos_relacionados / relacion_entre"]
+        B -->|"comparar pares O(n² (1 + t)), peso por similitud"| S["Grafo no dirigido y pesado"]
+        S -->|"vecinos O(d log d + d t), relación O(1 + t)"| T["juegos_relacionados / relacion_entre"]
     end
 
     D --> G["Terminal v5"]
@@ -67,7 +67,7 @@ flowchart TD
     B --> D["ArbolGeneral<br/>jerarquía de géneros"]
     B --> E["MonticuloMaximo<br/>Top 15 por rating (TP6)"]
     B --> F["Grafo<br/>relaciones"]
-    F --> G["BFS / DFS<br/>camino mínimo"]
+    F --> G["BFS / DFS<br/>exploración de la red"]
     C --> H["Recomendador"]
     D --> H
     E --> H
@@ -84,6 +84,8 @@ flowchart TD
 | TP4 | `ArbolAVL<Videojuego>` | RF02 | Búsqueda por título en tiempo logarítmico garantizado; el balance automático evita que degenere en lista si el dataset viene ordenado alfabéticamente. |
 | TP5 | `ArbolGeneral<Categoria>` | RF04 | Navegar familias y géneros; los juegos se agrupan en las hojas de la jerarquía. |
 | TP6 | `MonticuloMaximo<Videojuego>` | RF03 | Consultar los juegos con mayor rating sin ordenar todo el catálogo en cada consulta. |
-| TP7 | `Grafo<Videojuego>` | RF01, RF05 | Juegos como nodos; aristas precalculadas según género, familia y desarrollador compartidos (los tags siguen pendientes), para no comparar contra todo el catálogo en cada consulta. Ver `tp7-grafo.md`. |
+| TP7 | `Grafo<Videojuego>` | RF01, RF05 | Juegos como nodos; aristas precalculadas según género, familia, desarrollador o tags compartidos, para no comparar contra todo el catálogo en cada consulta. Ver `tp7-grafo.md`. |
 | TP8 | BFS / DFS | RF01, RF05 | Explorar la red de relaciones. |
-| TP9 | Camino mínimo | A definir | Se define qué significa "costo" entre dos juegos. |
+| TP10 | Integración y defensa | RF01–RF05 | Completar la recomendación, verificar el flujo completo y preparar la demo. |
+
+El profesor indicó que TP9 no forma parte de esta entrega.
