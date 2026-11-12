@@ -10,6 +10,7 @@ from modelos.videojuego import Videojuego
 PESO_MISMO_GENERO = 3
 PESO_MISMO_DESARROLLADOR = 2
 PESO_MISMA_FAMILIA = 1
+PESO_TAG_COMPARTIDO = 1
 
 
 @dataclass(frozen=True, slots=True)
@@ -28,9 +29,11 @@ def calcular_relacion(
     Suma puntos por cada criterio compartido:
     - mismo género: 3 (la afinidad más fuerte);
     - mismo desarrollador: 2;
-    - misma familia de géneros pero distinto género: 1 (jerarquía de TP5).
+    - misma familia de géneros pero distinto género: 1 (jerarquía de TP5);
+    - cada tag compartido: 1.
 
-    ``familia_de`` mapea ``genero.casefold()`` a su familia. Es O(1) y simétrica:
+    ``familia_de`` mapea ``genero.casefold()`` a su familia. Comparar tags cuesta
+    O(1 + t), con t = cantidad de tags de ambos juegos. La regla es simétrica:
     ``calcular_relacion(a, b) == calcular_relacion(b, a)``.
     """
     peso = 0
@@ -50,6 +53,11 @@ def calcular_relacion(
         peso += PESO_MISMO_DESARROLLADOR
         motivos.append(f"mismo desarrollador ({a.desarrollador})")
 
+    tags_compartidos = sorted(set(a.tags) & set(b.tags))
+    if tags_compartidos:
+        peso += PESO_TAG_COMPARTIDO * len(tags_compartidos)
+        motivos.append(f"tags compartidos ({', '.join(tags_compartidos)})")
+
     if peso == 0:
         return None
     return Relacion(peso, tuple(motivos))
@@ -60,7 +68,7 @@ def construir_grafo(
 ) -> Grafo[Videojuego]:
     """Arma el grafo de relaciones: un vértice por juego, una arista por par relacionado.
 
-    Compara cada par una sola vez, por lo que cuesta O(n²) y se paga al cargar el
+    Compara cada par una sola vez, por lo que cuesta O(n² (1 + t)) y se paga al cargar el
     catálogo, no en cada consulta. Es razonable para catálogos de cientos de juegos;
     para catálogos mucho mayores convendría agrupar por género y desarrollador y
     comparar solo dentro de cada grupo.
