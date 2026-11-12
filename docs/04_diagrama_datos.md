@@ -1,6 +1,6 @@
 # Diagrama de conexión entre estructuras
 
-## Estado actual (TP7)
+## Estado actual (TP8)
 
 La carga conserva una lista para listar y filtrar. Para buscar por título, `Catalogo`
 mantiene un AVL construido por inserción en el orden de los datos; se autobalancea,
@@ -8,13 +8,15 @@ por lo que mantiene altura O(log n) con cualquier orden de carga, aunque la altu
 exacta puede variar. El árbol general organiza las familias y categorías. El
 montículo máximo se construye al cargar los datos y mantiene el ranking por rating.
 El grafo de relaciones conecta juegos que comparten género, familia, desarrollador o tags.
+BFS encuentra una cadena con menos aristas entre dos juegos; DFS explora todos los
+juegos alcanzables desde uno.
 El BST de TP3 y el árbol estático de TP2 quedan como referencia experimental.
 
 ```mermaid
 flowchart TD
     A[("datos/videojuegos.json<br/>datos crudos")] -->|cargar_desde_json| B["list[Videojuego]<br/>Catalogo._elementos"]
 
-    subgraph prod["Producción (Terminal v5)"]
+    subgraph prod["Producción (Terminal v6)"]
         B -->|insertar en orden de carga| C["ArbolAVL"]
         C -->|"buscar por título - O(log n) garantizado"| D["Catalogo.buscar()"]
         B -->|"recorrido O(n)"| E["buscar_parcial / filtrar"]
@@ -24,14 +26,16 @@ flowchart TD
         B -->|agrupación por familia y género| R["ArbolGeneral de categorías"]
         B -->|"comparar pares O(n² (1 + t)), peso por similitud"| S["Grafo no dirigido y pesado"]
         S -->|"vecinos O(d log d + d t), relación O(1 + t)"| T["juegos_relacionados / relacion_entre"]
+        S -->|"BFS y DFS: O(V + E)"| U["camino_de_relaciones / explorar_red"]
     end
 
-    D --> G["Terminal v5"]
+    D --> G["Terminal v6"]
     E --> G
     F --> G
     Q --> G
     R --> G
     T --> G
+    U --> G
 
     subgraph exp["Comparación experimental"]
         B -.->|sufijos únicos| H["dataset TP3 sintético"]
@@ -85,7 +89,7 @@ flowchart TD
 | TP5 | `ArbolGeneral<Categoria>` | RF04 | Navegar familias y géneros; los juegos se agrupan en las hojas de la jerarquía. |
 | TP6 | `MonticuloMaximo<Videojuego>` | RF03 | Consultar los juegos con mayor rating sin ordenar todo el catálogo en cada consulta. |
 | TP7 | `Grafo<Videojuego>` | RF01, RF05 | Juegos como nodos; aristas precalculadas según género, familia, desarrollador o tags compartidos, para no comparar contra todo el catálogo en cada consulta. Ver `tp7-grafo.md`. |
-| TP8 | BFS / DFS | RF01, RF05 | Explorar la red de relaciones. |
+| TP8 | BFS / DFS | RF01, RF05 | Buscar una cadena con menos relaciones y explorar todos los juegos alcanzables. Ver `tp8-recorridos.md`. |
 | TP10 | Integración y defensa | RF01–RF05 | Completar la recomendación, verificar el flujo completo y preparar la demo. |
 
 El profesor indicó que TP9 no forma parte de esta entrega.
