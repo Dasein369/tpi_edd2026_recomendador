@@ -1,7 +1,6 @@
 # Diagrama de clases
 
-> Actualizado en TP7: búsqueda AVL, jerarquía de categorías, ranking mediante montículo y
-> grafo de relaciones entre juegos.
+> Actualizado en TP8: búsqueda AVL, categorías, ranking, grafo y recorridos BFS/DFS.
 > Se conservan el BST de TP3 y el árbol estático experimental de TP2.
 
 ```mermaid
@@ -35,6 +34,8 @@ classDiagram
         +top_n(cantidad=15) list
         +juegos_relacionados(videojuego, limite) list
         +relacion_entre(a, b) Relacion
+        +camino_de_relaciones(origen, destino) list
+        +explorar_red(origen) list
         +resumen_red() dict
         +buscar_parcial(texto) list
         +listar() list
@@ -119,6 +120,8 @@ classDiagram
         +peso(a, b) float
         +vecinos(vertice) dict
         +grado(vertice) int
+        +camino_bfs(origen, destino) list
+        +recorrido_dfs(origen) list
         +aristas() Iterator
         +cantidad_aristas() int
         +densidad() float
