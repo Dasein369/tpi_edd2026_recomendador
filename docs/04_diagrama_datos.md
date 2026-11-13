@@ -14,16 +14,16 @@ El BST de TP3 y el árbol estático de TP2 quedan como referencia experimental.
 
 ```mermaid
 flowchart TD
-    A[("datos/videojuegos.json<br/>datos crudos")] -->|cargar_desde_json| B["list[Videojuego]<br/>Catalogo._elementos"]
+    A[("datos/videojuegos.json<br/>datos crudos")] -->|"cargar_desde_json"| B["list[Videojuego]<br/>Catalogo._elementos"]
 
     subgraph prod["Producción (Terminal v6)"]
-        B -->|insertar en orden de carga| C["ArbolAVL"]
+        B -->|"insertar en orden de carga"| C["ArbolAVL"]
         C -->|"buscar por título - O(log n) garantizado"| D["Catalogo.buscar()"]
         B -->|"recorrido O(n)"| E["buscar_parcial / filtrar"]
-        B -->|copia de la lista| F["listar"]
-        B -->|heapify O(n), prioridad rating| P["MonticuloMaximo"]
+        B -->|"copia de la lista"| F["listar"]
+        B -->|"heapify O(n), prioridad rating"| P["MonticuloMaximo"]
         P -->|"Top k: O(k log k), sin mutar el heap"| Q["Catalogo.top_n(15)"]
-        B -->|agrupación por familia y género| R["ArbolGeneral de categorías"]
+        B -->|"agrupación por familia y género"| R["ArbolGeneral de categorías"]
         B -->|"comparar pares O(n² (1 + t)), peso por similitud"| S["Grafo no dirigido y pesado"]
         S -->|"vecinos O(d log d + d t), relación O(1 + t)"| T["juegos_relacionados / relacion_entre"]
         S -->|"BFS y DFS: O(V + E)"| U["camino_de_relaciones / explorar_red"]
@@ -38,13 +38,13 @@ flowchart TD
     U --> G
 
     subgraph exp["Comparación experimental"]
-        B -.->|sufijos únicos| H["dataset TP3 sintético"]
+        B -.->|"sufijos únicos"| H["dataset TP3 sintético"]
         H -->|"buscar_secuencial - O(n)"| I["benchmark_tp3.py"]
         H -->|"BST dinámico - O(h)"| I
         I --> J["resultados_tp3.csv<br/>tp3-complejidad.md"]
-        H -.->|5 órdenes de inserción| M["benchmark_tp4.py"]
-        M -->|BST vs AVL| N["resultados_tp4.csv<br/>tp4-avl.md"]
-        H -.->|ordenar + partir al medio| K["ArbolBusquedaBalanceada TP2"]
+        H -.->|"5 órdenes de inserción"| M["benchmark_tp4.py"]
+        M -->|"BST vs AVL"| N["resultados_tp4.csv<br/>tp4-avl.md"]
+        H -.->|"ordenar + partir al medio"| K["ArbolBusquedaBalanceada TP2"]
         K -->|"O(log n) en ese experimento"| L["benchmark_tp2.py"]
     end
 ```
