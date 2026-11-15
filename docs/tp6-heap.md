@@ -5,8 +5,8 @@
 El sistema necesita mostrar los juegos mejor valorados sin ordenar todos los juegos
 cada vez que el usuario consulta el ranking. Para esta primera versión, el equipo toma
 `Videojuego.rating` como prioridad: es el puntaje disponible que mejor representa la
-valoración general del juego. La popularidad y la personalización no están modeladas
-todavía.
+valoración general del juego. Este criterio deja una base estable para incorporar la
+personalización prevista en la integración final del sistema.
 
 Se implementó `MonticuloMaximo` manualmente en
 `estructuras/monticulo_maximo.py`, sobre un arreglo dinámico. La estructura no usa
