@@ -35,21 +35,23 @@ Como jugador quiero ingresar un juego y ver títulos similares para decidir qué
 
 **HU-02 — Buscar (RF02)**
 Como jugador quiero buscar un juego por título para ver su ficha completa.
-*Criterios TP3:* no distingue mayúsculas; si existe, muestra título, género,
-desarrollador, rating, horas jugadas y tags; si no existe, lo informa.
+*Criterios:* la búsqueda exacta no distingue mayúsculas; si no encuentra el título,
+muestra coincidencias parciales. Si no hay coincidencias, lo informa.
 
 **HU-03 — Top 15 (RF03)**
 Como jugador quiero ver los juegos mejor valorados para decidir rápido qué jugar.
 *Criterios:* muestra hasta 15 juegos, ordenados por rating descendente; si hay menos
 de 15, muestra todos; si el catálogo está vacío, informa que no hay resultados.
 
-**HU-04 — Explorar (RF04)**
-Como jugador quiero explorar juegos por género o tags para descubrir opciones dentro de lo que me gusta.
-*Criterios:* solo aparecen juegos que cumplen lo pedido; si no hay coincidencias, lo informa.
+**HU-04 — Explorar (RF04, RF09)**
+Como jugador quiero filtrar el catálogo o recorrer sus categorías.
+*Criterios:* puedo filtrar por género, tag, desarrollador o rating mínimo, y explorar
+familias y géneros.
 
 **HU-05 — Relación (RF05)**
-Como jugador quiero saber qué tan relacionados están varios juegos para entender qué tienen en común.
-*Criterios:* para cada par relacionado muestra el motivo; si no hay relación, lo indica.
+Como jugador quiero consultar la relación entre dos juegos y encontrar conexiones indirectas.
+*Criterios:* la terminal muestra motivos y peso de una relación directa; BFS encuentra
+una cadena con menos aristas y DFS recorre los juegos alcanzables desde un título.
 
 **Tarea técnica TP2 — Comparar estrategias de búsqueda**
 Como equipo necesitamos saber si conviene cambiar la búsqueda secuencial por una

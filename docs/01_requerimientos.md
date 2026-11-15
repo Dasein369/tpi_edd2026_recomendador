@@ -24,7 +24,7 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 | RF02 | Buscar un juego por título y ver su ficha. | Implementado con AVL; si no hay coincidencia exacta, la terminal muestra títulos que contienen el texto ingresado. |
 | RF03 | Mostrar hasta 15 juegos ordenados por rating. | Implementado mediante montículo máximo. |
 | RF04 | Explorar juegos por género, tag o categoría. | Implementado con filtros y árbol de categorías. |
-| RF05 | Consultar la relación entre dos juegos. | Implementado: muestra motivos y peso de la relación directa; BFS encuentra una cadena con menos aristas. |
+| RF05 | Consultar relaciones entre videojuegos. | Implementado: muestra juegos relacionados, compara dos títulos y permite recorrer conexiones con BFS y DFS. |
 
 ### Requerimientos de apoyo (surgidos en TP1)
 

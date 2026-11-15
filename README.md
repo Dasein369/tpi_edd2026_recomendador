@@ -6,7 +6,8 @@ Trabajo Práctico Integrador (TPI) — Estructuras de Datos
 ## Estado del proyecto
 
 La terminal permite buscar, filtrar, explorar categorías, consultar el Top 15 y ver
-juegos relacionados. También ofrece recorridos BFS y DFS sobre la red de relaciones.
+juegos relacionados. La búsqueda exacta sugiere coincidencias parciales; los filtros
+incluyen género, tag, desarrollador y rating mínimo. También ofrece recorridos BFS y DFS.
 El catálogo de ejemplo está en `datos/videojuegos.json`.
 
 ## Integrantes
