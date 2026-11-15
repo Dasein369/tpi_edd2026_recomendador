@@ -3,8 +3,8 @@
 ## Tablero
 
 - **Trello:** https://trello.com/b/oStQ2vvu/pixperience
-- **Columnas:** Links de Trabajo · Backlog · En progreso · En revisión · Hecho (una lista por sprint).
-- **Evidencia:** capturas del tablero en `docs/capturas/`.
+- **Organización:** Links de Trabajo, Backlog y listas Hecho separadas por sprint.
+- **Evidencia de avance:** actividad del tablero Trello e historial incremental de commits.
 
 ## Metodología
 
@@ -91,9 +91,9 @@ casos cubiertos con `unittest`; complejidad documentada en `docs/tp7-grafo.md`.
 Como jugador quiero conocer cómo se conectan dos juegos y explorar toda la red desde
 uno para descubrir relaciones indirectas.
 *Criterios de aceptación:* BFS devuelve una cadena con la menor cantidad de aristas;
-DFS visita cada juego alcanzable una sola vez; ambos manejan vértices aislados y
-catálogos vacíos; dos consultas disponibles en la terminal v6; pruebas automatizadas
-y análisis en `docs/tp8-recorridos.md`.
+DFS visita cada juego alcanzable una sola vez; los recorridos validan sus vértices y
+contemplan componentes desconectadas; las dos consultas están disponibles en la terminal
+v6; pruebas automatizadas y análisis en `docs/tp8-recorridos.md`.
 
 ## Retrospectivas
 
@@ -161,3 +161,14 @@ y análisis en `docs/tp8-recorridos.md`.
   etapa y los documentos conservaban ejemplos y estados anteriores.
 - **Acción para TP8:** definir una consulta real para BFS y otra para DFS, integrarlas
   en la terminal y documentar cuándo conviene cada recorrido.
+
+### Sprint TP8
+
+- **Qué salió bien:** BFS y DFS se integraron al grafo existente y quedaron disponibles
+  desde las opciones 8 y 9 de la terminal v6. Las pruebas automatizadas cubren los
+  recorridos, sus casos borde y la integración; la suite completa se ejecutó con todos
+  los tests aprobados.
+- **Qué mejorar:** sincronizar el cierre del sprint entre implementación, pruebas,
+  documentación y tablero para que el estado sea consistente en cada entrega.
+- **Acción para TP10:** integrar las consultas existentes en el flujo final de
+  recomendación y ensayar la demo de punta a punta.
