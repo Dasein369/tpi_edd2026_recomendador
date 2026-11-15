@@ -24,7 +24,7 @@ retrospectiva breve al cierre.
 | TP5 — Árbol general | Jerarquía de categorías y exploración integrada en terminal | Hecho |
 | TP6 — Heap | Montículo máximo por rating, Top 15 en terminal y análisis de complejidad | Hecho |
 | TP7 — Grafos | Modelo del grafo (vértices, aristas, tipo), lista de adyacencia, consultas de relacionados y relación entre dos juegos, terminal v5 | Hecho |
-| TP8 — BFS y DFS | Cadena con menos relaciones, exploración en profundidad, análisis y terminal v6 | Implementado en código; revisión del equipo pendiente |
+| TP8 — BFS y DFS | Cadena con menos relaciones, exploración en profundidad, análisis y terminal v6 | Hecho |
 | TP10 — Integración y defensa | Producto final, documentación, demo y defensa | Pendiente |
 
 El profesor indicó que TP9 no se requiere para esta entrega.
