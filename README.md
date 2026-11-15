@@ -109,7 +109,7 @@ Esto levanta el menú interactivo por terminal:
 ```
 1. Buscar videojuego
 2. Listar todos los videojuegos
-3. Filtrar por género o tag
+3. Filtrar por género, tag, desarrollador o rating mínimo
 4. Explorar categorías
 5. Ver Top 15 por rating
 6. Ver juegos relacionados
@@ -124,7 +124,7 @@ exploran mediante un árbol general. El Top 15 por rating se obtiene con un mont
 binario máximo implementado en el proyecto. Los juegos relacionados salen de un grafo
 no dirigido y pesado (lista de adyacencia): dos juegos se conectan si comparten género,
 familia de géneros, desarrollador o tags, y el peso indica cuánto se parecen. La opción 3
-permite buscar por género o tag. La lista del catálogo se conserva para
+filtra por género, tag, desarrollador o rating mínimo. La lista del catálogo se conserva para
 listar y filtrar. El BST de TP3 se desbalancea con entradas ordenadas (búsqueda `O(n)` en
 el peor caso); el AVL se autobalancea con rotaciones y garantiza `O(log n)` para
 cualquier orden de carga. El BST se conserva para el experimento comparativo de TP4.

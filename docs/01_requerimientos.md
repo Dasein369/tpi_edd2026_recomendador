@@ -33,7 +33,7 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 | RF06 | El sistema debe cargar el catálogo de videojuegos desde un archivo JSON. | Implementado |
 | RF07 | El sistema debe listar todos los videojuegos del catálogo. | Implementado |
 | RF08 | Buscar por texto parcial del título. | Implementado como sugerencias en la opción de búsqueda. |
-| RF09 | Filtrar por desarrollador o rating mínimo. | Disponible en `Catalogo`; no expuesto en la terminal. |
+| RF09 | Filtrar por desarrollador o rating mínimo. | Implementado en `Catalogo` y disponible en la opción de filtros de la terminal. |
 
 ## 3. Requerimientos no funcionales
 

@@ -30,7 +30,8 @@ muestra los disponibles.
 
 ## Explorar juegos (RF04)
 
-El jugador filtra por género o tag, o explora una categoría y sus subcategorías.
+El jugador filtra por género, tag, desarrollador o rating mínimo, o explora una
+categoría y sus subcategorías.
 
 ## Relaciones entre juegos (RF05)
 
