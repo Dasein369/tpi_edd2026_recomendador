@@ -5,14 +5,9 @@ Trabajo Práctico Integrador (TPI) — Estructuras de Datos
 
 ## Estado del proyecto
 
-La versión actual integra las etapas TP1 a TP8: catálogo, búsqueda AVL, categorías,
-Top 15 por rating, relaciones entre juegos y recorridos BFS/DFS en la terminal v6.
-TP9 no forma parte de esta cursada, según indicación del profesor. TP10 es la instancia
-de integración y defensa (Demo Day): para esa presentación, el producto debe llegar
-integrado, documentado y con la recomendación personalizada lista. Este README describe
-el estado incorporado hasta TP8.
-
-El catálogo de demostración está en `datos/videojuegos.json` y contiene 25 videojuegos.
+La terminal permite buscar, filtrar, explorar categorías, consultar el Top 15 y ver
+juegos relacionados. También ofrece recorridos BFS y DFS sobre la red de relaciones.
+El catálogo de ejemplo está en `datos/videojuegos.json`.
 
 ## Integrantes
 - Santiago Giménez
@@ -163,3 +158,4 @@ python3 -m unittest discover -s tests -t . -v
 ```bash
 deactivate
 ```
+

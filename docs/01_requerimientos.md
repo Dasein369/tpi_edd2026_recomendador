@@ -18,13 +18,13 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 
 ### Funcionalidades iniciales (definidas en TP0)
 
-| ID | Requerimiento | Etapa prevista | Estado actual |
+| ID | Requerimiento | Estado actual |
 |----|---------------|-----------------|---------------|
-| RF01 | El sistema debe recomendar un juego a partir de uno o varios juegos que le gustaron al usuario. | TP10 — Integración y defensa (Demo Day) | Objetivo del producto final: integrar catálogo, ranking y grafo en la selección personalizada que se presenta en la demo. |
-| RF02 | El sistema debe permitir buscar un juego por título y ver su ficha completa. | TP1; eficiencia en TP2–TP4 | Implementado: búsqueda exacta sin distinguir mayúsculas mediante AVL; muestra título, género, desarrollador, rating, horas jugadas y tags. |
-| RF03 | El sistema debe mostrar el Top 15 de juegos según un criterio (rating, popularidad, etc.). | TP6 | Implementado: usa un montículo binario máximo por rating y muestra hasta 15 juegos en orden descendente. |
-| RF04 | El sistema debe permitir explorar juegos por género, tag o categoría. | TP1 (filtro); TP5 (jerarquía); TP7 (tags) | Implementado: filtra por género o tag y explora familias/categorías en un árbol general. |
-| RF05 | El sistema debe mostrar qué tan relacionados están dos o más juegos elegidos por el usuario. | TP7–TP10 | La terminal muestra motivos de relación directa y cadenas indirectas entre dos juegos; la comparación conjunta forma parte del producto integrado para el Demo Day. |
+| RF01 | Ayudar al usuario a elegir un videojuego mostrando juegos relacionados con el título que ingresa. | Implementado: muestra hasta 10 juegos, ordenados por similitud y rating. |
+| RF02 | Buscar un juego por título y ver su ficha. | Implementado con AVL; si no hay coincidencia exacta, la terminal muestra títulos que contienen el texto ingresado. |
+| RF03 | Mostrar hasta 15 juegos ordenados por rating. | Implementado mediante montículo máximo. |
+| RF04 | Explorar juegos por género, tag o categoría. | Implementado con filtros y árbol de categorías. |
+| RF05 | Consultar la relación entre dos juegos. | Implementado: muestra motivos y peso de la relación directa; BFS encuentra una cadena con menos aristas. |
 
 ### Requerimientos de apoyo (surgidos en TP1)
 
@@ -32,8 +32,8 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 |----|---------------|---------------|
 | RF06 | El sistema debe cargar el catálogo de videojuegos desde un archivo JSON. | Implementado |
 | RF07 | El sistema debe listar todos los videojuegos del catálogo. | Implementado |
-| RF08 | El sistema debe permitir buscar por texto parcial del título (ej: "zeld" encuentra "Zelda"). | Implementado en `Catalogo`, no expuesto en el menú |
-| RF09 | El sistema debe permitir filtrar por desarrollador y por rating mínimo. | Implementado en `Catalogo`, no expuesto en el menú |
+| RF08 | Buscar por texto parcial del título. | Implementado como sugerencias en la opción de búsqueda. |
+| RF09 | Filtrar por desarrollador o rating mínimo. | Disponible en `Catalogo`; no expuesto en la terminal. |
 
 ## 3. Requerimientos no funcionales
 
@@ -53,8 +53,7 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 - Catálogo de videojuegos con título, género, tags, desarrollador, rating y horas jugadas.
 - Las horas jugadas se usan como aproximación de cuánto disfruta el usuario un juego,
   para intuir su perfil de gustos.
-- Búsqueda, exploración, ranking y relaciones por terminal. La recomendación personalizada
-  forma parte de la integración final prevista para TP10.
+- Búsqueda, exploración, ranking y consulta de juegos relacionados por terminal.
 - Comparación experimental de estrategias de búsqueda en TP2 y TP3; la aplicación integra
   un AVL por título (TP4) y un árbol general de categorías (TP5).
 - Top 15 por rating mediante montículo máximo (TP6).
@@ -68,12 +67,3 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 - Interfaz gráfica.
 - Autenticación o cuentas de usuario.
 
-## 6. Producto integrado para TP10 (Demo Day)
-
-- Llegar al Demo Day con el flujo de recomendación personalizada integrado: partir de
-  uno o varios juegos elegidos por el usuario y combinar las relaciones del grafo con
-  el ranking disponible.
-- Definir la fuente de datos para una versión ampliada del catálogo: importación desde
-  Steam o perfil de usuario simulado. El formato de entrada actual es JSON.
-- Presentar RF05 con las consultas por pares ya disponibles y la comparación conjunta
-  de varios juegos dentro del flujo final.

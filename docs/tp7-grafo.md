@@ -4,8 +4,7 @@
 
 Hasta TP6 cada juego se consultaba de forma aislada: por título (AVL), por categoría
 (árbol general) o por rating (heap). Ninguna estructura responde "¿qué juegos se parecen
-a este?". TP7 convierte las relaciones del dominio en una red para poder consultarlas
-(RF05) y aportar relaciones para la integración de recomendaciones (RF01, TP10).
+a este?". TP7 convierte las relaciones del dominio en una red para consultar juegos similares (RF01, RF05).
 
 ## Modelo del grafo
 
@@ -165,8 +164,7 @@ probar y reutilizar por separado.
   de datos y normalizar los atributos antes de construir el grafo.
 - **Criterio de similitud.** Los pesos reflejan la regla de negocio acordada por el equipo
   y están centralizados en `servicios/relaciones.py` para facilitar su ajuste.
-- **Recomendación personalizada (RF01).** El grafo y el Top 15 aportan candidatos; la
-  selección a partir de uno o varios juegos se integra en TP10.
+- **Recomendación (RF01).** `juegos_relacionados` muestra candidatos para el título ingresado, ordenados por similitud y rating.
 
 ## Archivos relacionados
 
@@ -175,3 +173,4 @@ probar y reutilizar por separado.
 - `servicios/catalogo.py`: integración (`juegos_relacionados`, `relacion_entre`, `resumen_red`).
 - `ui/terminal.py`: opciones 6 y 7 de la terminal v5.
 - `tests/test_tp7.py`: pruebas del grafo, las relaciones y la terminal.
+

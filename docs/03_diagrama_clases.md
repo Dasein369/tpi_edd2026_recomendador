@@ -178,8 +178,8 @@ classDiagram
 
 - La clase de dominio se llama `Videojuego` (en TP0 figuraba como `Juego`).
 - `Videojuego` incorpora `tags` en TP7 para ampliar RF04 y RF05.
-- `ArbolGeneral` se integró en TP5, `MonticuloMaximo` en TP6 y `Grafo` en TP7. El
-  `Recomendador` se incorpora en etapas posteriores. Ver `04_diagrama_datos.md`.
+- `ArbolGeneral` se integró en TP5, `MonticuloMaximo` en TP6 y `Grafo` en TP7. El catálogo integra las estructuras usadas por la terminal.
 - Se agregaron `Catalogo` y `Terminal`, que en TP0 no estaban diagramadas.
 - TP2 agregó `ArbolBusquedaBalanceada` y `NodoBusqueda`, exclusivas del experimento de
   comparación de estrategias de búsqueda; no reemplazan al BST que se construye en TP3.
+

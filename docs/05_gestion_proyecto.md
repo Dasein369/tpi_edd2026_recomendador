@@ -17,7 +17,7 @@ retrospectiva breve al cierre.
 | Sprint | Contenido | Estado |
 |--------|-----------|--------|
 | TP0 — Lanzamiento | Nombre, dominio, problema, usuario objetivo, cinco funcionalidades, ejemplo de interacción, boceto de terminal, diagrama inicial, propuesta | Hecho (9 tarjetas) |
-| TP1 — Objetos y clases | Clases del dominio, encapsulamiento, interfaces entre módulos, carga de datos, terminal, buscar/listar/filtrar | Hecho (6 tarjetas; demo pendiente) |
+| TP1 — Objetos y clases | Clases del dominio, encapsulamiento, interfaces entre módulos, carga de datos, terminal, buscar/listar/filtrar | Hecho (6 tarjetas) |
 | TP2 — Complejidad | Operación crítica, dos estrategias de búsqueda, mediciones con 100 a 100.000 elementos, notación O/Ω/Θ, conclusión técnica | Hecho (6 tarjetas) |
 | TP3 — Árbol binario | BST por título, búsqueda integrada, recorridos, comparación con la búsqueda secuencial, pruebas y documentación | Hecho (5 tarjetas) |
 | TP4 — AVL | Rotaciones, pruebas de desbalance del BST, comparación experimental y explicación de la complejidad | Hecho (4 tarjetas) |
@@ -25,18 +25,13 @@ retrospectiva breve al cierre.
 | TP6 — Heap | Montículo máximo por rating, Top 15 en terminal y análisis de complejidad | Hecho |
 | TP7 — Grafos | Modelo del grafo (vértices, aristas, tipo), lista de adyacencia, consultas de relacionados y relación entre dos juegos, terminal v5 | Hecho |
 | TP8 — BFS y DFS | Cadena con menos relaciones, exploración en profundidad, análisis y terminal v6 | Hecho |
-| TP10 — Integración y defensa | Producto final, documentación, demo y defensa | Pendiente |
-
-El profesor indicó que TP9 no se requiere para esta entrega.
 
 
 ## Historias de usuario
 
-**HU-01 — Recomendar (RF01)**
-Como jugador con una biblioteca grande quiero indicar uno o varios juegos que me gustaron
-para que el sistema me sugiera cuál jugar a continuación.
-*Criterios:* acepta uno o más títulos; termina al dejar la respuesta vacía; muestra al
-menos un juego recomendado que no sea ninguno de los ingresados.
+**HU-01 — Ver juegos relacionados (RF01)**
+Como jugador quiero ingresar un juego y ver títulos similares para decidir qué jugar.
+*Criterios:* muestra hasta 10 juegos ordenados por similitud y rating.
 
 **HU-02 — Buscar (RF02)**
 Como jugador quiero buscar un juego por título para ver su ficha completa.
@@ -102,7 +97,7 @@ v6; pruebas automatizadas y análisis en `docs/tp8-recorridos.md`.
 - **Qué salió bien:** el código quedó separado en capas (`modelos`, `servicios`, `ui`) y
   `Catalogo` se puede probar sin la interfaz.
 - **Qué mejorar:** la documentación de `docs/` quedó vacía hasta el cierre del sprint; conviene
-  completarla a medida que se avanza. La demo del TP1 quedó pendiente.
+  completarla a medida que se avanza. 
 - **Acción para TP2:** mantener el tablero al día y actualizar los documentos de `docs/`
   en cada tarea.
 
@@ -159,8 +154,7 @@ v6; pruebas automatizadas y análisis en `docs/tp8-recorridos.md`.
   cubren simetría, pesos, consultas y consistencia tras una carga inválida.
 - **Qué mejorar:** la primera versión de la regla omitía los tags acordados para esta
   etapa y los documentos conservaban ejemplos y estados anteriores.
-- **Acción para TP8:** definir una consulta real para BFS y otra para DFS, integrarlas
-  en la terminal y documentar cuándo conviene cada recorrido.
+- **Acción:** verificar pruebas y mantener sincronizados código y documentación.
 
 ### Sprint TP8
 
@@ -170,5 +164,4 @@ v6; pruebas automatizadas y análisis en `docs/tp8-recorridos.md`.
   los tests aprobados.
 - **Qué mejorar:** sincronizar el cierre del sprint entre implementación, pruebas,
   documentación y tablero para que el estado sea consistente en cada entrega.
-- **Acción para el Demo Day (TP10):** llegar con las consultas integradas al flujo final
-  de recomendación y ensayar la demo de punta a punta.
+
