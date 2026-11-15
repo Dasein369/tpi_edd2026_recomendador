@@ -32,8 +32,9 @@ def calcular_relacion(
     - misma familia de géneros pero distinto género: 1 (jerarquía de TP5);
     - cada tag compartido: 1.
 
-    ``familia_de`` mapea ``genero.casefold()`` a su familia. Comparar tags cuesta
-    O(1 + t), con t = cantidad de tags de ambos juegos. La regla es simétrica:
+    ``familia_de`` mapea ``genero.casefold()`` a su familia. Comparar y ordenar
+    tags compartidos cuesta O(1 + t log(t+1)), con t = cantidad de tags de ambos
+    juegos. La regla es simétrica:
     ``calcular_relacion(a, b) == calcular_relacion(b, a)``.
     """
     peso = 0
@@ -68,8 +69,8 @@ def construir_grafo(
 ) -> Grafo[Videojuego]:
     """Arma el grafo de relaciones: un vértice por juego, una arista por par relacionado.
 
-    Compara cada par una sola vez, por lo que cuesta O(n² (1 + t)) y se paga al cargar el
-    catálogo, no en cada consulta. Es razonable para catálogos de cientos de juegos;
+    Compara cada par una sola vez, por lo que cuesta O(n² (1 + t log(t+1))) y se paga
+    al cargar el catálogo, no en cada consulta. Es razonable para catálogos de cientos de juegos;
     para catálogos mucho mayores convendría agrupar por género y desarrollador y
     comparar solo dentro de cada grupo.
     """

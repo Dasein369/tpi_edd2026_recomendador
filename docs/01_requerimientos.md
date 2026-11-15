@@ -7,12 +7,10 @@ y organiza sus consultas con estructuras de datos. El dominio de referencia es S
 La versión de demostración carga 25 videojuegos desde `datos/videojuegos.json`; el
 modelo contempla título, género, tags, desarrollador, rating y horas jugadas.
 
-**Problema que resuelve.** Un jugador con una biblioteca grande de juegos comprados en
-Steam muchas veces no sabe cuál elegir entre todos los que ya tiene. El sistema lo
-orienta en su próxima elección.
+**Problema que resuelve.** Un jugador no sabe qué jugar y quiere descubrir títulos
+relacionados a partir de un juego que elige.
 
-**Usuario objetivo.** Jugador con una biblioteca grande en Steam, que prefiere juegos de
-rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
+**Usuario objetivo.** Jugador que busca opciones relacionadas con un título de interés.
 
 ## 2. Requerimientos funcionales
 
@@ -41,10 +39,10 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 |----|---------------|
 | RNF01 | El sistema debe ejecutarse con Python 3.10 o superior, usando solo la librería estándar. |
 | RNF02 | El sistema debe operarse íntegramente por una interfaz de línea de comandos. |
-| RNF03 | El código debe separarse en capas: `modelos` (datos), `estructuras` (colecciones), `servicios` (lógica), `algoritmos` (búsqueda y experimentos) y `ui` (interacción). |
+| RNF03 | El código se organiza en `modelos` (datos), `estructuras` (colecciones), `servicios` (lógica), `algoritmos` (búsquedas), `experimentos` (benchmarks) y `ui` (interacción). |
 | RNF04 | Las operaciones del catálogo deben tener pruebas automatizadas (`unittest`). |
-| RNF05 | La búsqueda por título en producción usa el AVL integrado en TP4, que garantiza O(log n) en el peor caso para cualquier orden de carga. El BST de TP3, con costo O(h) y O(n) en el peor caso, se conserva para el experimento comparativo (`experimentos/benchmark_tp4.py`). TP2 conserva su comparación histórica entre búsqueda secuencial y árbol estático balanceado en `experimentos/benchmark_tp2.py`. |
-| RNF06 | El acceso por título se evalúa con catálogos de hasta 100.000 elementos. El benchmark de TP2 compara una búsqueda secuencial (10,1 ms) con un árbol balanceado (3,2 µs) en la máquina de prueba; esos valores corresponden a la consulta y no al tiempo de carga de todas las estructuras. Los tiempos absolutos dependen del hardware; la comparación de crecimiento se explica en `docs/tp2-complejidad.md`. |
+| RNF05 | La búsqueda por título usa el AVL integrado en TP4, con O(log n) garantizado. El BST de TP3 se conserva para los benchmarks de TP3 y TP4; el árbol estático balanceado de TP2, para `experimentos/benchmark_tp2.py`. |
+| RNF06 | Comparar estrategias de búsqueda con datos de hasta 100.000 títulos; resultados en `docs/tp2-complejidad.md`. |
 | RNF07 | El Top 15 se obtiene desde un montículo máximo construido al cargar el catálogo, sin ordenar ni copiar todos los juegos por consulta. La consulta cuesta O(k log k), con k ≤ 15. |
 | RNF08 | Las relaciones entre juegos deben precalcularse, para no comparar contra todo el catálogo en cada consulta. |
 
@@ -52,7 +50,7 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 
 - Catálogo de videojuegos con título, género, tags, desarrollador, rating y horas jugadas.
 - Búsqueda, exploración, ranking y consulta de juegos relacionados por terminal.
-- Comparación experimental de estrategias de búsqueda en TP2 y TP3; la aplicación integra
+- Comparación experimental de estrategias de búsqueda en TP2, TP3 y TP4; la aplicación integra
   un AVL por título (TP4) y un árbol general de categorías (TP5).
 - Top 15 por rating mediante montículo máximo (TP6).
 - Relaciones entre videojuegos mediante un grafo, con consultas de similitud directa y

@@ -27,7 +27,8 @@ proyecto/
 │   ├── monticulo_maximo.py        # Heap binario para el Top 15 (TP6)
 │   └── grafo.py                   # grafo de TP7 y recorridos BFS/DFS de TP8
 ├── algoritmos/
-│   └── busqueda_secuencial.py     # estrategia de referencia de TP2/TP3
+│   ├── busqueda_secuencial.py     # búsqueda secuencial de referencia
+│   └── busqueda_arbol_tp2.py      # árbol balanceado del experimento TP2
 ├── modelos/
 │   ├── categoria.py               # familia/categoría del árbol general (TP5)
 │   └── videojuego.py             # clase de dominio (solo datos)
@@ -40,12 +41,12 @@ proyecto/
 │   └── videojuegos.json           # dataset de prueba
 ├── experimentos/
 │   ├── benchmark_tp2.py           # búsqueda secuencial vs. árbol balanceado (TP2)
-│   ├── benchmark_tp3.py           # comparación de estrategias integrada a TP3
+│   ├── benchmark_tp3.py           # búsqueda secuencial vs. BST de TP3
 │   └── benchmark_tp4.py           # BST vs AVL ante entradas desbalanceadas (TP4)
 ├── tests/
 │   ├── test_catalogo.py           # pruebas de las operaciones
 │   ├── test_tp2.py                # comparación TP2
-│   ├── test_tp3.py                # árbol e integración con el catálogo
+│   ├── test_tp3.py                # BST y búsqueda del catálogo
 │   ├── test_tp4.py                # AVL: rotaciones, invariantes, integración
 │   ├── test_tp5.py                # árbol general de categorías
 │   ├── test_tp6.py                # montículo y Top 15
@@ -76,7 +77,7 @@ proyecto/
 2. Crear un entorno virtual:
 
    ```bash
-   python3 -m venv venv
+   python -m venv venv
    ```
 
 3. Activarlo:
@@ -129,7 +130,8 @@ familia de géneros, desarrollador o tags, y el peso indica cuánto se parecen. 
 filtra por género, tag, desarrollador o rating mínimo. La lista del catálogo se conserva para
 listar y filtrar. El BST de TP3 se desbalancea con entradas ordenadas (búsqueda `O(n)` en
 el peor caso); el AVL se autobalancea con rotaciones y garantiza `O(log n)` para
-cualquier orden de carga. El BST se conserva para el experimento comparativo de TP4.
+cualquier orden de carga. Los benchmarks TP3 y TP4 conservan el BST para comparar
+estrategias de búsqueda.
 
 La opción 8 usa BFS para encontrar una cadena con la menor cantidad de relaciones
 entre dos juegos; no minimiza la suma de los pesos de similitud. La opción 9 usa DFS
@@ -152,7 +154,7 @@ para recorrer en profundidad todos los juegos alcanzables desde uno.
 ## Correr las pruebas
 
 ```bash
-python3 -m unittest discover -s tests -t . -v
+python -m unittest discover -s tests -t . -v
 ```
 
 ## Salir del entorno virtual

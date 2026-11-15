@@ -22,9 +22,8 @@ class ArbolBusquedaBalanceada:
     central. De esta forma, para cada tamaño probado la altura es O(log n) y la
     búsqueda puede analizarse como Θ(log n).
 
-    Importante: esta estructura NO reemplaza todavía al BST dinámico del TP3.
-    En TP3 podrá trasladarse/refactorizarse a la carpeta `estructuras/` para
-    incorporar inserción y recorridos dentro de la aplicación.
+    Esta estructura queda aislada en el experimento TP2. El catálogo usa el AVL;
+    el BST dinámico de TP3 se conserva para los benchmarks de TP3 y TP4.
     """
 
     def __init__(self, videojuegos: Iterable[Videojuego] = ()) -> None:

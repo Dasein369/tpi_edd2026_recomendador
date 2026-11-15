@@ -116,8 +116,9 @@ class Catalogo:
         """Vecinos del juego en el grafo, del más al menos parecido.
 
         Ordena por peso y, a igual peso, por rating; si todo empata conserva el orden
-        de carga. Cuesta O(d log d + d t), con d = cantidad de vecinos y t =
-        cantidad de tags por par, sin recorrer el catálogo completo. Lanza
+        de carga. Cuesta O(d log(d+1) + d t log(t+1)), con d = cantidad de vecinos
+        y t = tags totales por par, incluyendo su ordenamiento para exponer motivos,
+        sin recorrer el catálogo completo. Lanza
         KeyError si el juego no pertenece al catálogo.
         """
         vecinos = self._grafo.vecinos(videojuego)
@@ -130,7 +131,11 @@ class Catalogo:
         ]
 
     def relacion_entre(self, a: Videojuego, b: Videojuego) -> Relacion | None:
-        """Relación directa entre dos juegos, o None si no están conectados. O(1 + t)."""
+        """Relación directa entre dos juegos, o None si no están conectados.
+
+        Recalcular los motivos cuesta O(1 + t log(t+1)), con t = tags totales
+        de ambos juegos.
+        """
         if not self._grafo.tiene_arista(a, b):
             return None
         return calcular_relacion(a, b, FAMILIA_POR_GENERO)

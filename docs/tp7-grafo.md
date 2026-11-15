@@ -70,7 +70,7 @@ los pares candidatos.
 ## Operaciones y complejidad
 
 Sea `V` la cantidad de juegos, `E` la de aristas, `d` el grado de un vértice y `t`
-la cantidad de tags a comparar entre dos juegos.
+la cantidad total de tags de los dos juegos comparados.
 
 | Operación | Complejidad | Motivo |
 |-----------|-------------|--------|
@@ -78,9 +78,9 @@ la cantidad de tags a comparar entre dos juegos.
 | `tiene_arista`, `peso`, `grado` | O(1) | Búsqueda por clave. |
 | `vecinos(v)` | O(d) | Copia el diccionario del vértice. |
 | Recorrer todas las aristas | O(V + E) | Cada arista se emite una sola vez. |
-| Construir el grafo desde el catálogo | O(V² (1 + t)) | Compara cada par una vez e intersecta sus tags; se paga al cargar. |
-| `Catalogo.relacion_entre(a, b)` | O(1 + t) | Consulta la arista y recalcula los motivos de un par. |
-| `Catalogo.juegos_relacionados(v)` | O(d log d + d t) | Ordena los vecinos y recalcula sus motivos, sin recorrer el catálogo. |
+| Construir el grafo desde el catálogo | O(V² (1 + t log(t+1))) | Compara cada par una vez y ordena los tags compartidos; se paga al cargar. |
+| `Catalogo.relacion_entre(a, b)` | O(1 + t log(t+1)) | Consulta la arista y recalcula los motivos de un par. |
+| `Catalogo.juegos_relacionados(v)` | O(d log(d+1) + d t log(t+1)) | Ordena los vecinos y recalcula sus motivos, sin recorrer el catálogo. |
 | Espacio del grafo | O(V + E) | Una entrada por vértice y dos por arista. |
 
 La construcción es aceptable para este catálogo. Para catálogos mucho mayores
@@ -139,7 +139,7 @@ print(catalogo.resumen_red())  # {'vertices': 25, 'aristas': 132, 'densidad': 0.
 ```text
 datos/videojuegos.json
         ↓ carga
-Catalogo._elementos ── construir_grafo, O(V² (1 + t)) ──> Grafo[Videojuego]
+Catalogo._elementos ── construir_grafo, O(V² (1 + t log(t+1))) ──> Grafo[Videojuego]
         │                                              ↓ vecinos / peso
         └─────────────────────────────> Catalogo.juegos_relacionados / relacion_entre
                                                        ↓

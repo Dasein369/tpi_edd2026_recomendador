@@ -21,7 +21,8 @@ lo informa.
 ## Buscar juego (RF02)
 
 El jugador ingresa un título; el sistema muestra su ficha. La búsqueda usa el AVL y
-no distingue mayúsculas. Si no existe, lo informa.
+no distingue mayúsculas. Si no hay coincidencia exacta, muestra títulos que contienen
+el texto ingresado; si no encuentra coincidencias parciales, lo informa.
 
 ## Top 15 (RF03)
 

@@ -145,8 +145,7 @@ v6; pruebas automatizadas y análisis en `docs/tp8-recorridos.md`.
 
 - **Qué salió bien:** el montículo se construye al cargar el catálogo; la consulta Top-N
   recorre solo los candidatos necesarios y preserva la estructura.
-- **Qué mejorar:** la prioridad actual usa el rating global como criterio único; la
-  popularidad y la personalización quedan para una etapa posterior.
+- **Qué mejorar:** la consulta de ranking utiliza solo el rating global.
 - **Acción para TP7:** modelar relaciones del dominio y definir con claridad el criterio
   de conexión antes de construir el grafo.
 

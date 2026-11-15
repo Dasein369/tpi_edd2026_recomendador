@@ -2,7 +2,7 @@
 
 ## 1. Objetivo
 
-El sistema **PixExperience** debe permitir encontrar un videojuego por título. En TP1 esa operación se resuelve recorriendo secuencialmente la lista del catálogo. En TP2 se comparan dos estrategias para la misma necesidad:
+El sistema **Pixperience** debe permitir encontrar un videojuego por título. En TP1 esa operación se resuelve recorriendo secuencialmente la lista del catálogo. En TP2 se comparan dos estrategias para la misma necesidad:
 
 1. **Búsqueda secuencial** sobre una lista.
 2. **Búsqueda en un árbol binario de búsqueda balanceado**, construido a partir de los mismos elementos.
@@ -33,7 +33,8 @@ En cada comparación, si el título buscado es menor se continúa por la izquier
 
 La construcción del árbol se excluye de la medición de búsqueda. En esta implementación la construcción incluye ordenar los datos, por lo que cuesta **O(n log n)**; es un costo de preparación amortizable cuando el catálogo se consulta muchas veces.
 
-> Esta estructura es específica del experimento de TP2. El TP3 puede incorporar un BST dinámico con inserción y recorridos dentro de la aplicación.
+> Esta estructura es específica del experimento de TP2. En TP3 se incorporó un BST
+> dinámico con inserción y recorridos; desde TP4, el catálogo usa el AVL.
 
 ## 4. Diseño experimental
 
@@ -69,7 +70,7 @@ Para un catálogo pequeño, ambas estrategias pueden responder rápidamente y la
 
 Por lo tanto, el experimento muestra una diferencia fundamental de escalabilidad: la estrategia secuencial requiere un trabajo proporcional a `n` en el peor caso, mientras que la búsqueda sobre el árbol balanceado requiere un número de pasos proporcional a `log n`.
 
-En TP3 se incorporó un BST al catálogo. Desde TP4, la búsqueda del producto usa el AVL;
+En TP3 se incorporó un BST al catálogo. Desde TP4, la búsqueda del catálogo usa el AVL;
 el BST se conserva para las comparaciones experimentales.
 
 ## 8. Cómo ejecutar

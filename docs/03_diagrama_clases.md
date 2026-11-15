@@ -148,6 +148,11 @@ classDiagram
         +agregar_hijo(valor) NodoGeneral
     }
 
+    class Categoria {
+        +nombre: str
+        +videojuegos: list
+    }
+
     Terminal --> Catalogo : usa
     Catalogo "1" o-- "*" Videojuego : contiene
     Catalogo --> ArbolAVL : buscar por título
@@ -157,6 +162,8 @@ classDiagram
     Grafo "1" o-- "*" Videojuego : vértices
     Catalogo ..> Relacion : motivo y peso
     ArbolGeneral "1" o-- "*" NodoGeneral : contiene
+    NodoGeneral --> Categoria : valor
+    Categoria --> Videojuego : juegos de la categoría
     ArbolAVL "1" o-- "*" NodoAVL : contiene
     NodoAVL --> Videojuego : referencia
     ArbolBinarioBusqueda "1" o-- "*" NodoArbol : contiene
@@ -165,16 +172,16 @@ classDiagram
     NodoBusqueda --> Videojuego : referencia
 ```
 
-> **Nota:** `Catalogo.buscar()` delega en `ArbolAVL.buscar()`. `Catalogo.top_n()` consulta
+> **Nota:** las búsquedas de título/categoría, las relaciones y los caminos pueden
+> devolver `None` si no hay resultado; `Grafo.peso()` también si no existe la arista.
+> `Catalogo.buscar()` delega en `ArbolAVL.buscar()`. `Catalogo.top_n()` consulta
 > el montículo construido al cargar el catálogo; `mayores()` no altera su contenido.
 > `Catalogo` construye el `Grafo` al cargar los datos (`servicios/relaciones.py` define el
 > criterio de similitud y la clase `Relacion`) y lo consulta para juegos relacionados,
 > relaciones directas y recorridos BFS/DFS.
-> `ArbolBinarioBusqueda` ya no
-> está en producción: queda como punto de comparación de `benchmark_tp4.py`. La búsqueda
-> secuencial (`algoritmos/busqueda_secuencial.py`) se conserva para la comparación. El
-> `ArbolBusquedaBalanceada` sigue aislado en el experimento TP2 y no se reutiliza: la
-> nueva estructura se construye insertando cada juego en el orden de carga.
+> `ArbolBinarioBusqueda` ya no está en producción: queda en los benchmarks TP3 y TP4.
+> La búsqueda secuencial también se conserva para comparar. El AVL
+> del catálogo se construye insertando los juegos en el orden de carga.
 
 ## Diferencias respecto del diagrama inicial (TP0)
 
@@ -183,5 +190,5 @@ classDiagram
 - `ArbolGeneral` se integró en TP5, `MonticuloMaximo` en TP6 y `Grafo` en TP7. El catálogo integra las estructuras usadas por la terminal.
 - Se agregaron `Catalogo` y `Terminal`, que en TP0 no estaban diagramadas.
 - TP2 agregó `ArbolBusquedaBalanceada` y `NodoBusqueda`, exclusivas del experimento de
-  comparación de estrategias de búsqueda; no reemplazan al BST que se construye en TP3.
+  búsqueda; el AVL reemplazó al BST de TP3 en el catálogo.
 

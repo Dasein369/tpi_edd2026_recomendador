@@ -52,11 +52,11 @@ esa garantía depende de la forma del árbol.
 
 ## Conclusión
 
-En esta muestra, el BST reduce las comparaciones frente al recorrido lineal porque las
-inserciones producen una altura baja. A diferencia del árbol balanceado experimental de
-TP2, puede desbalancearse según el orden de inserción: búsqueda e inserción llegan a
-O(n) en el peor caso. La aplicación usa el AVL integrado en TP4 para garantizar búsquedas
-O(log n).
+En esta muestra, el BST tuvo menor tiempo de búsqueda que el recorrido lineal porque las
+inserciones produjeron una altura baja. A diferencia del árbol balanceado experimental
+de TP2, puede desbalancearse según el orden de inserción: búsqueda e inserción llegan a
+O(n) en el peor caso. La aplicación usa el AVL integrado en TP4 para garantizar
+búsquedas O(log n).
 
 Para repetir el experimento desde la raíz:
 
