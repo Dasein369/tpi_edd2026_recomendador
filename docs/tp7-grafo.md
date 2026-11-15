@@ -5,7 +5,7 @@
 Hasta TP6 cada juego se consultaba de forma aislada: por título (AVL), por categoría
 (árbol general) o por rating (heap). Ninguna estructura responde "¿qué juegos se parecen
 a este?". TP7 convierte las relaciones del dominio en una red para poder consultarlas
-(RF05) y dejar lista la base de la recomendación (RF01, TP8).
+(RF05) y aportar relaciones para la integración de recomendaciones (RF01, TP10).
 
 ## Modelo del grafo
 
@@ -61,12 +61,12 @@ eligió lista de adyacencia por estos motivos:
   matriz exigiría asignar un índice entero a cada juego y mantener esa correspondencia.
 - **Catálogo dinámico:** agregar un vértice no obliga a redimensionar nada.
 
-Una limitación honesta: la familia conecta a todos los juegos de una misma rama y los
-tags compartidos agregan más conexiones, así que la cantidad de aristas puede crecer
-de forma cuadrática. La lista sigue siendo adecuada para consultar vecinos y recorrer
-la red, aunque este grafo de densidad 0,44 no es muy ralo. La matriz tendría sentido si la
-consulta principal fuera "¿están conectados A y B?" en un grafo mucho más denso; aun así,
-la lista responde eso en O(1) con el diccionario.
+En el catálogo de demostración la densidad es 0,44. La familia y los tags aumentan la
+conectividad, por lo que la cantidad de aristas puede crecer cuadráticamente según los
+datos. La lista de adyacencia conserva acceso O(1) a una arista y permite recorrer vecinos
+en proporción al grado; su costo espacial es O(V + E). Para ampliar el catálogo, la
+construcción puede optimizarse agrupando juegos por atributos compartidos y evaluando solo
+los pares candidatos.
 
 ## Operaciones y complejidad
 
@@ -155,16 +155,18 @@ La regla de negocio (qué significa "relacionados") está en `servicios/relacion
 la estructura (`estructuras/grafo.py`) no conoce nada del dominio, así que se puede
 probar y reutilizar por separado.
 
-## Limitaciones y trabajo futuro
+## Alcance de esta etapa y continuidad
 
-- **Solo relaciones directas.** "No tienen relación directa" no significa "no tienen
-  relación": *Elden Ring* y *Portal 2* pueden conectarse a través de otros juegos.
-  Explorar esos caminos es el objetivo de TP8 (BFS/DFS).
-- **Tags manuales.** Los 25 juegos de ejemplo tienen tags seleccionados a mano; antes
-  de usar un catálogo grande habrá que definir su fuente y calidad.
-- **Pesos elegidos por el equipo.** Los valores 3, 2 y 1 son ajustables; cada tag
-  compartido agrega un punto.
-- **Recomendación a partir de varios juegos (RF01)** queda para TP8/TP10.
+- **Relaciones directas e indirectas.** TP7 permite consultar vecinos y comparar dos
+  juegos. TP8 amplía esas consultas con BFS para hallar una cadena con menos aristas y
+  DFS para explorar todos los juegos alcanzables.
+- **Datos de demostración.** El catálogo actual contiene 25 juegos con tags seleccionados
+  para ilustrar los criterios de relación. Una fuente ampliada debe conservar el modelo
+  de datos y normalizar los atributos antes de construir el grafo.
+- **Criterio de similitud.** Los pesos reflejan la regla de negocio acordada por el equipo
+  y están centralizados en `servicios/relaciones.py` para facilitar su ajuste.
+- **Recomendación personalizada (RF01).** El grafo y el Top 15 aportan candidatos; la
+  selección a partir de uno o varios juegos se integra en TP10.
 
 ## Archivos relacionados
 
