@@ -51,8 +51,6 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 ## 4. Alcance
 
 - Catálogo de videojuegos con título, género, tags, desarrollador, rating y horas jugadas.
-- Las horas jugadas se usan como aproximación de cuánto disfruta el usuario un juego,
-  para intuir su perfil de gustos.
 - Búsqueda, exploración, ranking y consulta de juegos relacionados por terminal.
 - Comparación experimental de estrategias de búsqueda en TP2 y TP3; la aplicación integra
   un AVL por título (TP4) y un árbol general de categorías (TP5).

@@ -83,4 +83,5 @@ un título no existe, informa el problema sin iniciar el recorrido.
 
 `tests/test_tp8.py` comprueba que BFS elige menos aristas aunque una arista pese más,
 los casos sin camino y con vértices aislados, la visita única de DFS, un camino
-indirecto real del catálogo y ambas opciones de la terminal v6.
+indirecto real del catálogo, las consultas de la terminal v6, las sugerencias de
+búsqueda parcial y los filtros por desarrollador y rating.

@@ -39,6 +39,7 @@ proyecto/
 ├── datos/
 │   └── videojuegos.json           # dataset de prueba
 ├── experimentos/
+│   ├── benchmark_tp2.py           # búsqueda secuencial vs. árbol balanceado (TP2)
 │   ├── benchmark_tp3.py           # comparación de estrategias integrada a TP3
 │   └── benchmark_tp4.py           # BST vs AVL ante entradas desbalanceadas (TP4)
 ├── tests/
