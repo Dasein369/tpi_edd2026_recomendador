@@ -3,6 +3,16 @@ Sistema de recomendaciones de Videojuegos
 
 Trabajo Práctico Integrador (TPI) — Estructuras de Datos
 
+## Estado del proyecto
+
+La versión actual integra las etapas TP1 a TP8: catálogo, búsqueda AVL, categorías,
+Top 15 por rating, relaciones entre juegos y recorridos BFS/DFS en la terminal v6.
+La entrega contempla hasta TP8; TP9 no forma parte de esta cursada, según indicación
+del profesor. La integración final de TP10 reúne el flujo de recomendación personalizada,
+la documentación y la demo.
+
+El catálogo de demostración está en `datos/videojuegos.json` y contiene 25 videojuegos.
+
 ## Integrantes
 - Santiago Giménez
 - Martín Sánchez
