@@ -37,6 +37,8 @@ classDiagram
         +camino_de_relaciones(origen, destino) list
         +explorar_red(origen) list
         +resumen_red() dict
+        +listar_categorias() list
+        +explorar_categoria(nombre) list
         +buscar_parcial(texto) list
         +listar() list
         +filtrar(genero, desarrollador, rating_minimo, tag) list
@@ -166,8 +168,8 @@ classDiagram
 > **Nota:** `Catalogo.buscar()` delega en `ArbolAVL.buscar()`. `Catalogo.top_n()` consulta
 > el montículo construido al cargar el catálogo; `mayores()` no altera su contenido.
 > `Catalogo` construye el `Grafo` al cargar los datos (`servicios/relaciones.py` define el
-> criterio de similitud y la clase `Relacion`) y lo consulta en `juegos_relacionados()` y
-> `relacion_entre()`.
+> criterio de similitud y la clase `Relacion`) y lo consulta para juegos relacionados,
+> relaciones directas y recorridos BFS/DFS.
 > `ArbolBinarioBusqueda` ya no
 > está en producción: queda como punto de comparación de `benchmark_tp4.py`. La búsqueda
 > secuencial (`algoritmos/busqueda_secuencial.py`) se conserva para la comparación. El
