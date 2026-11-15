@@ -69,7 +69,8 @@ Para un catálogo pequeño, ambas estrategias pueden responder rápidamente y la
 
 Por lo tanto, el experimento muestra una diferencia fundamental de escalabilidad: la estrategia secuencial requiere un trabajo proporcional a `n` en el peor caso, mientras que la búsqueda sobre el árbol balanceado requiere un número de pasos proporcional a `log n`.
 
-La siguiente etapa del proyecto, TP3, consiste en llevar esta idea al producto mediante un BST integrado a la aplicación.
+En TP3 se incorporó un BST al catálogo. Desde TP4, la búsqueda del producto usa el AVL;
+el BST se conserva para las comparaciones experimentales.
 
 ## 8. Cómo ejecutar
 

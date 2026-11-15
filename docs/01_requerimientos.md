@@ -19,7 +19,7 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 ### Funcionalidades iniciales (definidas en TP0)
 
 | ID | Requerimiento | Estado actual |
-|----|---------------|-----------------|---------------|
+|----|---------------|-----------------|
 | RF01 | Ayudar al usuario a elegir un videojuego mostrando juegos relacionados con el título que ingresa. | Implementado: muestra hasta 10 juegos, ordenados por similitud y rating. |
 | RF02 | Buscar un juego por título y ver su ficha. | Implementado con AVL; si no hay coincidencia exacta, la terminal muestra títulos que contienen el texto ingresado. |
 | RF03 | Mostrar hasta 15 juegos ordenados por rating. | Implementado mediante montículo máximo. |
