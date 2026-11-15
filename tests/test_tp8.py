@@ -92,6 +92,18 @@ class TestIntegracionTP8(unittest.TestCase):
         self.assertIn("Ficha del videojuego:", salida)
         self.assertIn("Título: Hollow Knight", salida)
 
+    def test_filtros_terminal_por_desarrollador_y_rating(self):
+        desarrollador = self.ejecutar(["3", "3", "FromSoftware", "0"])
+        self.assertIn("- Elden Ring", desarrollador)
+        self.assertIn("- Dark Souls III", desarrollador)
+        rating = self.ejecutar(["3", "4", "9.7", "0"])
+        self.assertIn("- The Legend of Zelda: Breath of the Wild", rating)
+        self.assertNotIn("- Portal 2", rating)
+
+    def test_filtro_rating_rechaza_valor_invalido(self):
+        salida = self.ejecutar(["3", "4", "alto", "0"])
+        self.assertIn("Rating inválido: 'alto'.", salida)
+
 
 if __name__ == "__main__":
     unittest.main()

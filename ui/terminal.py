@@ -43,7 +43,7 @@ class Terminal:
         print("=" * 40)
         print("1. Buscar videojuego")
         print("2. Listar todos los videojuegos")
-        print("3. Filtrar por género o tag")
+        print("3. Filtrar juegos")
         print("4. Explorar categorías")
         print("5. Ver Top 15 por rating")
         print("6. Ver juegos relacionados")
@@ -78,15 +78,35 @@ class Terminal:
             print(f"- {videojuego}")
 
     def _filtrar(self) -> None:
-        criterio = input("Género o tag: ").strip()
-        por_genero = self._catalogo.filtrar(genero=criterio)
-        por_tag = self._catalogo.filtrar(tag=criterio)
-        resultados = list(dict.fromkeys([*por_genero, *por_tag]))
+        print("Filtrar por: 1. Género  2. Tag  3. Desarrollador  4. Rating mínimo")
+        tipo = input("Criterio: ").strip()
+        valor = input("Valor: ").strip()
+        if not valor:
+            print("Ingresá un valor para filtrar.")
+            return
+
+        if tipo == "1":
+            resultados = self._catalogo.filtrar(genero=valor)
+        elif tipo == "2":
+            resultados = self._catalogo.filtrar(tag=valor)
+        elif tipo == "3":
+            resultados = self._catalogo.filtrar(desarrollador=valor)
+        elif tipo == "4":
+            try:
+                rating_minimo = float(valor)
+            except ValueError:
+                print(f"Rating inválido: '{valor}'.")
+                return
+            resultados = self._catalogo.filtrar(rating_minimo=rating_minimo)
+        else:
+            print("Criterio inválido.")
+            return
+
         if resultados:
             for videojuego in resultados:
                 print(f"- {videojuego}")
         else:
-            print(f"No hay elementos en '{criterio}'.")
+            print(f"No hay videojuegos que coincidan con '{valor}'.")
 
     def _explorar_categorias(self) -> None:
         print("Categorías disponibles:")
