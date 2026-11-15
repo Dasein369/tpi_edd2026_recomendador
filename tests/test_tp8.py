@@ -81,6 +81,17 @@ class TestIntegracionTP8(unittest.TestCase):
         self.assertIn("No encontramos 'xyz'.", self.ejecutar(["9", "xyz", "0"]))
         self.assertIn("mismo videojuego", self.ejecutar(["8", "Elden Ring", "Elden Ring", "0"]))
 
+    def test_busqueda_terminal_sugiere_coincidencias_parciales(self):
+        salida = self.ejecutar(["1", "Hollow Kni", "0"])
+        self.assertIn("No encontramos 'Hollow Kni'.", salida)
+        self.assertIn("Coincidencias parciales:", salida)
+        self.assertIn("- Hollow Knight", salida)
+
+    def test_busqueda_terminal_mantiene_ficha_para_titulo_exacto(self):
+        salida = self.ejecutar(["1", "Hollow Knight", "0"])
+        self.assertIn("Ficha del videojuego:", salida)
+        self.assertIn("Título: Hollow Knight", salida)
+
 
 if __name__ == "__main__":
     unittest.main()

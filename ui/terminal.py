@@ -56,16 +56,22 @@ class Terminal:
     def _buscar(self) -> None:
         titulo = input("Título a buscar: ").strip()
         resultado = self._catalogo.buscar(titulo)
-        if resultado:
-            print("Ficha del videojuego:")
-            print(f"Título: {resultado.titulo}")
-            print(f"Género: {resultado.genero}")
-            print(f"Desarrollador: {resultado.desarrollador}")
-            print(f"Rating: {resultado.rating}")
-            print(f"Horas jugadas (usuario): {resultado.horas_jugadas}")
-            print(f"Tags: {', '.join(resultado.tags) if resultado.tags else 'sin tags'}")
-        else:
+        if resultado is None:
             print(f"No encontramos '{titulo}'.")
+            sugerencias = self._catalogo.buscar_parcial(titulo)
+            if sugerencias:
+                print("Coincidencias parciales:")
+                for videojuego in sugerencias:
+                    print(f"- {videojuego.titulo}")
+            return
+
+        print("Ficha del videojuego:")
+        print(f"Título: {resultado.titulo}")
+        print(f"Género: {resultado.genero}")
+        print(f"Desarrollador: {resultado.desarrollador}")
+        print(f"Rating: {resultado.rating}")
+        print(f"Horas jugadas (usuario): {resultado.horas_jugadas}")
+        print(f"Tags: {', '.join(resultado.tags) if resultado.tags else 'sin tags'}")
 
     def _listar(self) -> None:
         for videojuego in self._catalogo.listar():
