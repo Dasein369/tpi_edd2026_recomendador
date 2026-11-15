@@ -20,11 +20,11 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 
 | ID | Requerimiento | Etapa prevista | Estado actual |
 |----|---------------|-----------------|---------------|
-| RF01 | El sistema debe recomendar un juego a partir de uno o varios juegos que le gustaron al usuario. | TP10 | Integración final: el catálogo, el ranking y el grafo proveen los datos para completar la selección personalizada. |
+| RF01 | El sistema debe recomendar un juego a partir de uno o varios juegos que le gustaron al usuario. | TP10 — Integración y defensa (Demo Day) | Objetivo del producto final: integrar catálogo, ranking y grafo en la selección personalizada que se presenta en la demo. |
 | RF02 | El sistema debe permitir buscar un juego por título y ver su ficha completa. | TP1; eficiencia en TP2–TP4 | Implementado: búsqueda exacta sin distinguir mayúsculas mediante AVL; muestra título, género, desarrollador, rating, horas jugadas y tags. |
 | RF03 | El sistema debe mostrar el Top 15 de juegos según un criterio (rating, popularidad, etc.). | TP6 | Implementado: usa un montículo binario máximo por rating y muestra hasta 15 juegos en orden descendente. |
 | RF04 | El sistema debe permitir explorar juegos por género, tag o categoría. | TP1 (filtro); TP5 (jerarquía); TP7 (tags) | Implementado: filtra por género o tag y explora familias/categorías en un árbol general. |
-| RF05 | El sistema debe mostrar qué tan relacionados están dos o más juegos elegidos por el usuario. | TP7–TP10 | La terminal muestra motivos de relación directa y cadenas indirectas entre dos juegos; la comparación conjunta de varios juegos se integra en TP10. |
+| RF05 | El sistema debe mostrar qué tan relacionados están dos o más juegos elegidos por el usuario. | TP7–TP10 | La terminal muestra motivos de relación directa y cadenas indirectas entre dos juegos; la comparación conjunta forma parte del producto integrado para el Demo Day. |
 
 ### Requerimientos de apoyo (surgidos en TP1)
 
@@ -68,11 +68,12 @@ rol y que no siempre sabe cuál de los que ya tiene le conviene jugar.
 - Interfaz gráfica.
 - Autenticación o cuentas de usuario.
 
-## 6. Integración prevista para TP10
+## 6. Producto integrado para TP10 (Demo Day)
 
-- Completar el flujo de recomendación personalizada a partir de uno o varios juegos
-  elegidos por el usuario, combinando las relaciones del grafo con el ranking disponible.
+- Llegar al Demo Day con el flujo de recomendación personalizada integrado: partir de
+  uno o varios juegos elegidos por el usuario y combinar las relaciones del grafo con
+  el ranking disponible.
 - Definir la fuente de datos para una versión ampliada del catálogo: importación desde
   Steam o perfil de usuario simulado. El formato de entrada actual es JSON.
-- Extender RF05 para comparar conjuntamente más de dos juegos, manteniendo las consultas
-  por pares ya disponibles.
+- Presentar RF05 con las consultas por pares ya disponibles y la comparación conjunta
+  de varios juegos dentro del flujo final.

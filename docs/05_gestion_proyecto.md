@@ -170,5 +170,5 @@ v6; pruebas automatizadas y análisis en `docs/tp8-recorridos.md`.
   los tests aprobados.
 - **Qué mejorar:** sincronizar el cierre del sprint entre implementación, pruebas,
   documentación y tablero para que el estado sea consistente en cada entrega.
-- **Acción para TP10:** integrar las consultas existentes en el flujo final de
-  recomendación y ensayar la demo de punta a punta.
+- **Acción para el Demo Day (TP10):** llegar con las consultas integradas al flujo final
+  de recomendación y ensayar la demo de punta a punta.

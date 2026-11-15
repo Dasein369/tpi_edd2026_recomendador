@@ -7,9 +7,10 @@ Trabajo Práctico Integrador (TPI) — Estructuras de Datos
 
 La versión actual integra las etapas TP1 a TP8: catálogo, búsqueda AVL, categorías,
 Top 15 por rating, relaciones entre juegos y recorridos BFS/DFS en la terminal v6.
-La entrega contempla hasta TP8; TP9 no forma parte de esta cursada, según indicación
-del profesor. La integración final de TP10 reúne el flujo de recomendación personalizada,
-la documentación y la demo.
+TP9 no forma parte de esta cursada, según indicación del profesor. TP10 es la instancia
+de integración y defensa (Demo Day): para esa presentación, el producto debe llegar
+integrado, documentado y con la recomendación personalizada lista. Este README describe
+el estado incorporado hasta TP8.
 
 El catálogo de demostración está en `datos/videojuegos.json` y contiene 25 videojuegos.
 
