@@ -1,12 +1,10 @@
 from __future__ import annotations
 
 from collections.abc import Iterable
-from dataclasses import dataclass
 
 from modelos.videojuego import Videojuego
 
 
-@dataclass(slots=True)
 class NodoAVL:
     """Nodo de un árbol AVL por título.
 
@@ -16,11 +14,42 @@ class NodoAVL:
     equivalentes (ver ``ArbolAVL``).
     """
 
-    videojuego: Videojuego
-    orden: int
-    altura: int = 1
-    izquierda: NodoAVL | None = None
-    derecha: NodoAVL | None = None
+    __slots__ = ("videojuego", "orden", "altura", "izquierda", "derecha")
+
+    def __init__(
+        self,
+        videojuego: Videojuego,
+        orden: int,
+        altura: int = 1,
+        izquierda: NodoAVL | None = None,
+        derecha: NodoAVL | None = None,
+    ) -> None:
+        self.videojuego = videojuego
+        self.orden = orden
+        self.altura = altura
+        self.izquierda = izquierda
+        self.derecha = derecha
+
+    def __repr__(self) -> str:
+        return (
+            f"NodoAVL(videojuego={self.videojuego!r}, orden={self.orden!r}, "
+            f"altura={self.altura!r}, izquierda={self.izquierda!r}, "
+            f"derecha={self.derecha!r})"
+        )
+
+    def __eq__(self, otro: object) -> bool:
+        if not isinstance(otro, NodoAVL):
+            return NotImplemented
+        return (
+            self.videojuego == otro.videojuego
+            and self.orden == otro.orden
+            and self.altura == otro.altura
+            and self.izquierda == otro.izquierda
+            and self.derecha == otro.derecha
+        )
+
+    # Es mutable (las rotaciones cambian sus campos), así que no puede ser hashable.
+    __hash__ = None
 
 
 class ArbolAVL:
