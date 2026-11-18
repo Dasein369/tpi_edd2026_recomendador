@@ -1,7 +1,6 @@
 """Reglas del dominio para relacionar videojuegos y construir el grafo (TP7)."""
 
 from collections.abc import Mapping, Sequence
-from dataclasses import dataclass
 
 from estructuras.grafo import Grafo
 from modelos.videojuego import Videojuego
@@ -13,13 +12,36 @@ PESO_MISMA_FAMILIA = 1
 PESO_TAG_COMPARTIDO = 1
 
 
-@dataclass(frozen=True, slots=True)
 class Relacion:
-    """Resultado de comparar dos juegos: peso total y motivos que lo explican."""
+    """Resultado de comparar dos juegos: peso total y motivos que lo explican.
 
-    peso: int
-    motivos: tuple[str, ...]
+    Es inmutable: expone sus datos solo mediante propiedades de lectura.
+    """
 
+    __slots__ = ("_peso", "_motivos")
+
+    def __init__(self, peso: int, motivos: tuple[str, ...]) -> None:
+        self._peso = peso
+        self._motivos = tuple(motivos)
+
+    @property
+    def peso(self) -> int:
+        return self._peso
+
+    @property
+    def motivos(self) -> tuple[str, ...]:
+        return self._motivos
+
+    def __repr__(self) -> str:
+        return f"Relacion(peso={self._peso!r}, motivos={self._motivos!r})"
+
+    def __eq__(self, otro: object) -> bool:
+        if not isinstance(otro, Relacion):
+            return NotImplemented
+        return self._peso == otro._peso and self._motivos == otro._motivos
+
+    def __hash__(self) -> int:
+        return hash((self._peso, self._motivos))
 
 def calcular_relacion(
     a: Videojuego, b: Videojuego, familia_de: Mapping[str, str]
